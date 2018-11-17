@@ -1,0 +1,14 @@
+<div style="text-align:center">
+  <input hidden type="file" #uploader (change)="uploadFile($event)" />
+  <button mat-raised-button color="primary" (click)="uploader.click()">
+    Upload
+  </button>
+  <div *ngIf="fin">
+    <p>Titles Consumed: {{titlesConsumed}}</p>
+    <p>Titles failed: {{notFound}}</p>
+    <p>Minutes watched: {{totLength}}</p>
+    <p>Hours watched: {{(totLength/60).toFixed(1)}}</p>
+
+    <p>Highscore: {{highScore/60}} hours, Date: {{highScoreDate}}</p>
+  </div>
+</div>
