@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
 import { TmdbClientService } from '../../tmdbrequests/tmdb-client.service';
 import { BackendClientService } from '../../parser/backend-client.service';
-import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { JSONstats } from 'src/app/parser/JSONstats.model';
+import { of } from 'rxjs';
 
 
 function sleep(ms) {
@@ -55,120 +56,20 @@ export class UploadComponent implements OnInit {
       json[item[0]] = item[1]
     })
 
-    console.log(json)
-
-    const obj = [...json].reduce((o, [key, value]) => (o[key] = value, o), {});
-    console.log(obj);
-
     this.titlesConsumed = content.length;
-
-    this.backendClient.getResults(json).subscribe(data => {
+    
+    this.backendClient.getResults(json).subscribe((data: JSONstats) => {
+      data = JSON.parse(data.toString());
       console.log(data);
+      this.backendClient.stats = of(data);
+
+      //console.log(data['result'])
+      this.totLength = data['runtime'];
+      this.notFound = data['not_found'];
+      this.highScore = data['highscore'];
+      this.highScoreDate = data['highscore_date'];
     })
     
-    /*
-    let counter = 0;
-
-    content.forEach(item => {
-      let date: string = item[1]//.substr(-11, 10);
-      let title: string = item[0];//.substr(0, item[0].length - 13);
-
-      title = this.parseTitle(title);
-
-      if (!this.dates.has(date)) {
-        this.dates.set(date, 0);
-      }
-
-
-
-      if (this.mediaLengths.has(title)) {
-        this.totLength += this.mediaLengths.get(title);
-        this.dates.set(date, this.dates.get(date) + this.mediaLengths.get(title));
-        counter++;
-        if (counter == content.length) {
-          this.fin = true;
-        }
-        return;
-      } else {
-        //console.log("request: " + title);
-        this.tmdbClient.multiSearch(title).subscribe(
-          async response => {
-            console.log(response.headers.get("X-RateLimit-Remaining"))
-            if (response.headers.get("X-RateLimit-Remaining") == "0") {
-
-              await sleep(10000);
-              console.log("After sleep:  " + new Date().toString());
-            }
-
-            counter++;
-            if (counter == content.length) {
-              this.fin = true;
-            }
-
-            if (typeof response.body['results'][0] === 'undefined') {
-              this.notFound++;
-              console.log(title)
-              return;
-            }
-            let mostProbableResult = response.body['results'][0]
-
-            this.tmdbClient.mediasearch(mostProbableResult['id'], mostProbableResult['media_type']).subscribe(
-              async response => {
-                console.log(response.headers.get("X-RateLimit-Remaining"))
-
-                if (response.headers.get("X-RateLimit-Remaining") == "0") {
-                  await sleep(10000);
-                  console.log("After MEDIA sleep:  " + new Date().toString());
-                }
-
-                let result = response.body;
-                let runtime: number = 0;
-
-                if (mostProbableResult['media_type'] == 'movie') {
-                  if (!isNaN(result['runtime'])) {
-                    runtime = result['runtime']
-                  }
-
-                } else if (mostProbableResult['media_type'] == 'tv') {
-                  if (!isNaN(result['episode_run_time'][0])) {
-                    runtime = result['episode_run_time'][0]
-                  }
-
-                  if (result['episode_run_time'].length > 1) {
-                    //console.log("multiple runtimes")
-                  }
-                } else {
-                  console.log("UNKNOWN MEDIA TYPE")
-                }
-                this.totLength += runtime;
-                this.mediaLengths.set(title, runtime);
-
-                let totrun = this.dates.get(date) + runtime;
-                this.dates.set(date, totrun);
-
-                if (this.dates.get(date) + runtime > this.highScore) {
-                  this.highScore = totrun;
-                  this.highScoreDate = date;
-                }
-              },
-              async err => {
-                console.log("MEDIA ERROR");
-                console.log(err);
-                this.notFound++;
-                await sleep(10000);
-                console.log("After ERROR sleep:  " + new Date().toString());
-              })
-          },
-          async err => {
-            console.log(err);
-            this.notFound++;
-            await sleep(10000);
-            console.log("After ERROR sleep:  " + new Date().toString());
-          },
-        );
-      }
-    });
-    */
     this.fin = true;
   }
 

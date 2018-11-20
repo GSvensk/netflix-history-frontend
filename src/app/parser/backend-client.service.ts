@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { JSONstats } from '../parser/JSONstats.model';
 
 class req {
   items: Map<string, string>;
@@ -14,22 +16,24 @@ class req {
 })
 export class BackendClientService {
 
+  stats: Observable<JSONstats> = of(null);
+
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     })
   };
 
   constructor(private http: HttpClient) { }
 
+  get statistics() {
+    return this.stats;
+  }
+
   getResults(title: Map<string, string>) {
-    console.log("TJA");
     let items = new req(title);
     console.log(items);
-    const obj = [...title].reduce((o, [key, value]) => (o[key] = value, o), {});
-    console.log(obj);
-
     return this.http.post("http://localhost:5000/parse", items, this.httpOptions);
   }
 }
