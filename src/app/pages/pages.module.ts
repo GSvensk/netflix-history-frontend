@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartComponent } from './chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { InformationComponent } from './information/information.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   declarations: [
     LandingpageComponent,
     UploadComponent,
-    ChartComponent
+    ChartComponent,
+    StatisticsComponent,
+    InformationComponent
   ],
   imports: [
     CommonModule,
@@ -28,8 +32,8 @@ const routes: Routes = [
     ChartsModule,
     MatButtonModule
   ],
-   exports: [
-     LandingpageComponent
-   ]
+  exports: [
+    LandingpageComponent
+  ]
 })
 export class PagesModule { }

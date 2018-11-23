@@ -1,4 +1,5 @@
 <div color="primary" class="single-page-component">
-    <app-upload></app-upload>
-    <app-chart></app-chart>
+    <app-upload (upload)="onUpload($event)"></app-upload>
+    <app-statistics *ngIf="upload"></app-statistics>
+    <app-chart *ngIf="upload"></app-chart>
 </div>

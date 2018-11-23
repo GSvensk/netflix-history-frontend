@@ -4,4 +4,6 @@ export interface JSONstats {
     highscore: number;
     highscoreDate: Date;
     weekdays: number[];
+    months: number[];
+    years: Object;
 }

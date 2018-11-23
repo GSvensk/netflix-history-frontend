@@ -14,24 +14,51 @@ export class ChartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  public weekdayLabels: string[] = ['Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  public monthLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                                   'September', 'October', 'Novemeber', 'December'];
+  public yearLabels: string[] = [];
+
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
+  /*
   public barChartData: BarChartData[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
+  ];*/
 
-  public barChart: BarChartData[] = [
+  public weekdays: BarChartData[] = [
     { data: [0, 0, 0, 0, 0, 0, 0], label: 'Weekdays' }
   ];
 
+  public months: BarChartData[] = [
+    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Months' }
+  ];
+
+  public years: BarChartData[] = [
+    { data: [], label: 'Years'}
+  ];
+
   constructor(private backendClient: BackendClientService) {
-    this.backendClient.statistics.subscribe((data: JSONstats | null) => {
+    this.backendClient.statistics.subscribe((data: JSONstats) => {
+      if (data) {
+        this.weekdays[0].data = data.weekdays;
+        this.months[0].data = data.months;
+        this.parseYears(data.years);
+        console.log(data.months);
+      }
       //console.log(Array.from(data.weekdays.values()))
-      this.barChart[0].data = data.weekdays;
     })
+  }
+
+  parseYears(years: Object) {
+    Object.entries(years).forEach(
+      ([key, value]) => {
+        this.yearLabels.push(key)
+        this.years[0].data.push(value)
+      }
+    );
   }
   // events
   public chartClicked(e: any): void {
@@ -52,9 +79,9 @@ export class ChartComponent implements OnInit {
       56,
       (Math.random() * 100),
       40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
+    //let clone = JSON.parse(JSON.stringify(this.barChartData));
+    //clone[0].data = data;
+    //this.barChartData = clone;
     /**
      * (My guess), for Angular to recognize the change in the dataset
      * it has to change the dataset variable directly,

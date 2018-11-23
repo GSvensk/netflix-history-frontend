@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
-import { TmdbClientService } from '../../tmdbrequests/tmdb-client.service';
 import { BackendClientService } from '../../parser/backend-client.service';
 import { JSONstats } from 'src/app/parser/JSONstats.model';
 import { of } from 'rxjs';
 
-
-function sleep(ms) {
-  console.log("Before sleep: " + new Date().toString());
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 @Component({
   selector: 'app-upload',
@@ -18,25 +12,19 @@ function sleep(ms) {
 })
 export class UploadComponent implements OnInit {
 
-  mediaLengths: Map<string, number> = new Map<string, number>();
-  dates: Map<string, number> = new Map<string, number>();
-  totLength: number = 0;
-  notFound: number = 0;
+  @Output() upload: EventEmitter<any> = new EventEmitter();
+
   titlesConsumed: number;
-  highScore: number = -1;
-  highScoreDate: string;
   fin: boolean = false;
 
   constructor(private papa: Papa,
-    private tmdbClient: TmdbClientService,
     private backendClient: BackendClientService) { }
 
   ngOnInit() {
   }
 
   uploadFile($event) {
-    console.log($event.target.files[0]); // outputs the first file
-
+    //console.log($event.target.files[0]); // outputs the first file
     this.papa.parse($event.target.files[0], {
       complete: (result) => {
         this.parseFile(result['data'])
@@ -45,32 +33,24 @@ export class UploadComponent implements OnInit {
   }
 
   parseFile(content: string[][]) {
-    
+
     content.shift();
     content.pop();
-    console.log(content);
-
+    this.titlesConsumed = content.length;
+    this.fin = true;
     let json: Map<string, string> = new Map<string, string>();
 
     content.forEach(item => {
       json[item[0]] = item[1]
     })
 
-    this.titlesConsumed = content.length;
-    
     this.backendClient.getResults(json).subscribe((data: JSONstats) => {
       data = JSON.parse(data.toString());
-      console.log(data);
+      //console.log(data);
       this.backendClient.stats = of(data);
-
-      //console.log(data['result'])
-      this.totLength = data['runtime'];
-      this.notFound = data['not_found'];
-      this.highScore = data['highscore'];
-      this.highScoreDate = data['highscore_date'];
+      this.upload.emit(null);
+      //this.fin = true;
     })
-    
-    this.fin = true;
   }
 
   parseTitle(title: string) {
