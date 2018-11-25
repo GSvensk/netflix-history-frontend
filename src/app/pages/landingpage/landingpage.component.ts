@@ -8,14 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class LandingpageComponent implements OnInit {
 
   upload: boolean = false;
+  loading: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onUpload() {
-    this.upload = true;
+  onLoad() {
+    this.loading = !this.loading;
+    console.log("loading: " + this.loading);
   }
 
+  onUpload() {
+    this.upload = true;
+    console.log("upload: " + this.upload);
+  }
 }

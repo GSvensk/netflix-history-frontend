@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="layer">
+    <div class="instructions">
+      <mat-list role="list">
+        <mat-list-item role="listitem"><span class="number">1</span> Go to &nbsp;<a href="https://www.netflix.com/viewingactivity">
+            www.netflix.com/viewingactivity</a> </mat-list-item>
+        <mat-list-item role="listitem"><span class="number"></span>Make sure your netflix language is set to English</mat-list-item>
+        <mat-list-item role="listitem"><span class="number">2</span> Go to the bottom of the page and press "Download
+          all"</mat-list-item>
+        <mat-list-item role="listitem"><span class="number">3</span>
+          <app-upload (upload)="onUpload($event)" (load)="onLoad($event)"></app-upload>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

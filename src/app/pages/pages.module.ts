@@ -8,7 +8,10 @@ import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { InformationComponent } from './information/information.component';
-
+import { InstructionsComponent } from './instructions/instructions.component';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { ParseModule } from '../parser/parse.module';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -22,7 +25,8 @@ const routes: Routes = [
     UploadComponent,
     ChartComponent,
     StatisticsComponent,
-    InformationComponent
+    InformationComponent,
+    InstructionsComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,10 @@ const routes: Routes = [
       routes
     ),
     ChartsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    ParseModule
   ],
   exports: [
     LandingpageComponent

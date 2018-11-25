@@ -1,7 +1,29 @@
-<div>
-  <p>Titles failed: {{notFound}}</p>
-  <p>Minutes watched: {{totLength}}</p>
-  <p>Hours watched: {{(totLength/60).toFixed(1)}}</p>
-
-  <p>Highscore: {{highScore/60}} hours, Date: {{highScoreDate}}</p>
+<div id="stats">
+  <ul>
+    <div>
+      <li class="center">
+        <i class="material-icons">hourglass_empty</i><span class="icon-text"> {{(totLength/60).toFixed(1)}} hours </span><i class="material-icons">hourglass_empty</i>
+      </li>
+    </div>
+    <div>
+      <li class="center">
+        <i class="material-icons">slideshow</i><span class="icon-text"> {{titlesConsumed}} titles </span><i class="material-icons">slideshow</i>
+      </li>
+    </div>
+    <div>
+      <li class="center">
+        <i class="material-icons">movie</i><span class="icon-text"> {{movies}} movies </span><i class="material-icons">movie</i>
+      </li>
+    </div>
+    <div>
+      <li class="center">
+        <i class="material-icons">grade</i><span class="icon-text"> {{highScore/60}} hours, {{highScoreDate}} </span><i class="material-icons">grade</i>
+      </li>
+    </div>
+    <div>
+      <li class="center">
+        <i class="material-icons">error</i><span class="icon-text"> {{notFound}} titles not found </span><i class="material-icons">error</i>
+      </li>
+    </div>
+  </ul>
 </div>

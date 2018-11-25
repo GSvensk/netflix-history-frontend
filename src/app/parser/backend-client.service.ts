@@ -17,6 +17,7 @@ class req {
 export class BackendClientService {
 
   stats: Observable<JSONstats> = of(null);
+  titlesConsumed: Observable<number> = of(null);
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,6 +30,10 @@ export class BackendClientService {
 
   get statistics() {
     return this.stats;
+  }
+
+  get titlesWatched() {
+    return this.titlesConsumed;
   }
 
   getResults(title: Map<string, string>) {

@@ -1,0 +1,21 @@
+#stats {
+    text-align: center;
+}
+
+.center {
+    margin: 2% 0;
+    font-weight: 400;
+    font-size: larger;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.icon-text {
+    margin: 0 4%;
+    white-space:nowrap;
+}
+
+.mat-progress-spinner {
+    margin: auto;
+}

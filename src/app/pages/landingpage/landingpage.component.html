@@ -1,5 +1,6 @@
-<div color="primary" class="single-page-component">
-    <app-upload (upload)="onUpload($event)"></app-upload>
-    <app-statistics *ngIf="upload"></app-statistics>
-    <app-chart *ngIf="upload"></app-chart>
+<div class="single-page-component">
+    <app-instructions (upload)="onUpload($event)" (loading)="onLoad($event)"></app-instructions>
+    <!--<app-upload *ngIf="!upload" (upload)="onUpload($event)"></app-upload>-->
+    <app-spinner *ngIf="loading"></app-spinner>
+    <app-chart *ngIf="upload && !loading"></app-chart>
 </div>

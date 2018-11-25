@@ -13,9 +13,9 @@ import { of } from 'rxjs';
 export class UploadComponent implements OnInit {
 
   @Output() upload: EventEmitter<any> = new EventEmitter();
-
+  @Output() load: EventEmitter<any> = new EventEmitter();
   titlesConsumed: number;
-  fin: boolean = false;
+  loading: boolean = false;
 
   constructor(private papa: Papa,
     private backendClient: BackendClientService) { }
@@ -25,6 +25,8 @@ export class UploadComponent implements OnInit {
 
   uploadFile($event) {
     //console.log($event.target.files[0]); // outputs the first file
+    this.loading = true;
+    this.load.emit(null);
     this.papa.parse($event.target.files[0], {
       complete: (result) => {
         this.parseFile(result['data'])
@@ -37,7 +39,7 @@ export class UploadComponent implements OnInit {
     content.shift();
     content.pop();
     this.titlesConsumed = content.length;
-    this.fin = true;
+    this.backendClient.titlesConsumed = of(content.length);
     let json: Map<string, string> = new Map<string, string>();
 
     content.forEach(item => {
@@ -48,17 +50,10 @@ export class UploadComponent implements OnInit {
       data = JSON.parse(data.toString());
       //console.log(data);
       this.backendClient.stats = of(data);
+      this.load.emit(null);
       this.upload.emit(null);
-      //this.fin = true;
+      this.loading = false;
     })
-  }
-
-  parseTitle(title: string) {
-    title = title.split(':')[0]
-    title = title.replace("(U.S.)", "")
-    title = title.replace("(U.K.)", "")
-    title = title.replace('’', "'")
-    return encodeURI(title)
   }
 }
 
