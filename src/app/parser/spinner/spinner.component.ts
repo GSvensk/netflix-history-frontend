@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BackendClientService } from '../backend-client.service';
 
 @Component({
@@ -8,15 +8,11 @@ import { BackendClientService } from '../backend-client.service';
 })
 export class SpinnerComponent implements OnInit {
 
-  titlesConsumed: number;
+  @Input('titles') titlesConsumed: number;
 
-  constructor(private backendClient: BackendClientService) {
-    this.backendClient.titlesWatched.subscribe(titles => {
-      this.titlesConsumed = titles;
-    })
-   }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

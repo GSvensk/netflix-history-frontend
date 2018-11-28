@@ -9,19 +9,19 @@ export class LandingpageComponent implements OnInit {
 
   upload: boolean = false;
   loading: boolean = false;
+  titles: number;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onLoad() {
+  onLoad(length) {
+    this.titles = length;
     this.loading = !this.loading;
-    console.log("loading: " + this.loading);
   }
 
   onUpload() {
     this.upload = true;
-    console.log("upload: " + this.upload);
   }
 }

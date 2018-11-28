@@ -20,7 +20,7 @@ export class InstructionsComponent implements OnInit {
     this.upload.emit(null);
   }
 
-  onLoad() {
-    this.load.emit(null);
+  onLoad(length) {
+    this.load.emit(length);
   }
 }

@@ -40,5 +40,6 @@ export class BackendClientService {
     let items = new req(title);
     console.log(items);
     return this.http.post("http://localhost:5000/parse", items, this.httpOptions);
+    // https://netflix-activity-api.herokuapp.com/parse
   }
 }

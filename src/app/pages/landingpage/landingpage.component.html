@@ -1,6 +1,11 @@
 <div class="single-page-component">
-    <app-instructions (upload)="onUpload($event)" (loading)="onLoad($event)"></app-instructions>
-    <!--<app-upload *ngIf="!upload" (upload)="onUpload($event)"></app-upload>-->
-    <app-spinner *ngIf="loading"></app-spinner>
+    <app-instructions (upload)="onUpload($event)" (load)="onLoad($event)"></app-instructions>
+</div>
+<div [ngClass]="(loading || upload)?'single-page-component':'hide'" id="spinner">
+    <app-spinner *ngIf="loading" [titles]="titles"></app-spinner>
     <app-chart *ngIf="upload && !loading"></app-chart>
 </div>
+<!--
+<div>
+    <app-information></app-information>
+</div>-->

@@ -9,17 +9,16 @@
   --detail-color: #831010;
 }
 
-html, body { height: 100%; }
-body { 
+html, body { 
+  height: 100%;
   margin: 0;
+  padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--secondary-color);
   color: var(--text-color);
 }
 
 .single-page-component{
-    min-height: 88vh;
-    padding-top: 10vh;
-    margin-top: -8vh;
+    min-height: 100vh;
   }
 

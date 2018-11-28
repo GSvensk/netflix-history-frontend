@@ -8,13 +8,8 @@ import { JSONstats } from '../../parser/JSONstats.model';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
-  highScore: number;
-  highScoreDate: string;
-  totLength: number;
-  notFound: number;
-  movies: number;
   titlesConsumed: number;
-
+  stats: JSONstats;
 
   constructor(private backendClient: BackendClientService) { }
 
@@ -27,13 +22,8 @@ export class StatisticsComponent implements OnInit {
     this.backendClient.statistics.subscribe((data: JSONstats) => {
 
       if (data) {
+        this.stats = data;
         console.log(data);
-        //console.log(data['result'])
-        this.totLength = data['runtime'];
-        this.notFound = data['not_found'];
-        this.movies = data['movies'];
-        this.highScore = data['highscore'];
-        this.highScoreDate = data['highscore_date'];
       }
     })
   }

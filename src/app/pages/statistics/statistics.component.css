@@ -3,7 +3,7 @@
 }
 
 .center {
-    margin: 2% 0;
+    margin: 4% 0;
     font-weight: 400;
     font-size: larger;
     display: inline-flex;
@@ -18,4 +18,16 @@
 
 .mat-progress-spinner {
     margin: auto;
+}
+
+.float-left {
+    float: left;
+    width: 50%;
+    height: 100;
+}
+
+.float-right {
+    float: right;
+    width: 50%;
+    height: 100;
 }

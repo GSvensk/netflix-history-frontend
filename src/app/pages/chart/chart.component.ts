@@ -100,7 +100,6 @@ export class ChartComponent implements OnInit {
   constructor(private backendClient: BackendClientService) {
 
     this.backendClient.statistics.subscribe((data: JSONstats) => {
-      console.log(data);
       if (data) {
         this.weekdays[0].data = data.weekdays;
         this.months[0].data = data.months;

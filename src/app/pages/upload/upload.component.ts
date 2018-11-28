@@ -3,6 +3,7 @@ import { Papa } from 'ngx-papaparse';
 import { BackendClientService } from '../../parser/backend-client.service';
 import { JSONstats } from 'src/app/parser/JSONstats.model';
 import { of } from 'rxjs';
+import { ScrollService } from 'src/app/shared/scroll.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class UploadComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private papa: Papa,
-    private backendClient: BackendClientService) { }
+    private backendClient: BackendClientService,
+    private scroller: ScrollService) { }
 
   ngOnInit() {
   }
@@ -26,7 +28,7 @@ export class UploadComponent implements OnInit {
   uploadFile($event) {
     //console.log($event.target.files[0]); // outputs the first file
     this.loading = true;
-    this.load.emit(null);
+    this.scroller.triggerScrollTo();
     this.papa.parse($event.target.files[0], {
       complete: (result) => {
         this.parseFile(result['data'])
@@ -39,6 +41,7 @@ export class UploadComponent implements OnInit {
     content.shift();
     content.pop();
     this.titlesConsumed = content.length;
+    this.load.emit(content.length);
     this.backendClient.titlesConsumed = of(content.length);
     let json: Map<string, string> = new Map<string, string>();
 
@@ -53,7 +56,9 @@ export class UploadComponent implements OnInit {
       this.load.emit(null);
       this.upload.emit(null);
       this.loading = false;
-    })
+    }, error => {
+      console.log(error);
+    });
   }
 }
 

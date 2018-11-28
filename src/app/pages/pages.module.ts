@@ -12,6 +12,8 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { ParseModule } from '../parser/parse.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -37,7 +39,9 @@ const routes: Routes = [
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    ParseModule
+    ParseModule,
+    MatTooltipModule,
+    SharedModule
   ],
   exports: [
     LandingpageComponent
