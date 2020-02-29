@@ -39,7 +39,7 @@ export class BackendClientService {
   getResults(title: Map<string, string>) {
     let items = new req(title);
     console.log(items);
-    return this.http.post("http://localhost:5000/parse", items, this.httpOptions);
+    return this.http.post("http://localhost:8080/statistics", title, this.httpOptions);
     // https://netflix-activity-api.herokuapp.com/parse
   }
 }
