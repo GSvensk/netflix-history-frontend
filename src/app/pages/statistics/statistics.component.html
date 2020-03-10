@@ -3,7 +3,7 @@
     <ul>
       <div>
         <li class="center" matTooltip="Total number of hours watched" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">watch_later</i><span class="icon-text"> {{(stats.runtime/60).toFixed(1)}} hours
+          <i class="material-icons">watch_later</i><span class="icon-text"> {{(stats.totalTime).toFixed(1)}} hours
           </span><i class="material-icons">watch_later</i>
         </li>
       </div>
@@ -19,13 +19,13 @@
       </div>
       <div>
         <li class="center" matTooltip="Highest recorded viewing time on the same day" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">whatshot</i><span class="icon-text"> {{stats.highscore/60}} hours,
-            {{stats.highscore_date}} </span><i class="material-icons">whatshot</i>
+          <i class="material-icons">whatshot</i><span class="icon-text"> {{(stats.longestBinge).toFixed(1)}} hours,
+            {{stats.longestBingeDate}} </span><i class="material-icons">whatshot</i>
         </li>
       </div>
       <div *ngIf="stats.not_found !== 0">
         <li class="center" matTooltip="Number of titles for which no runtime was found" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">error</i><span class="icon-text"> {{stats.not_found}} titles not found </span><i
+          <i class="material-icons">error</i><span class="icon-text"> {{stats.notFound}} titles not found </span><i
             class="material-icons">error</i>
         </li>
       </div>
@@ -40,31 +40,31 @@
     <ul>
       <div>
         <li class="center" matTooltip="Your favorite movie" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">movie</i><span class="icon-text"> {{stats.top_movie}}
+          <i class="material-icons">movie</i><span class="icon-text"> {{stats.mostWatchedMovie}}
           </span><i class="material-icons">movie</i>
         </li>
       </div>
       <div>
         <li class="center" matTooltip="" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">slideshow</i><span class="icon-text"> {{stats.top_movie_times}} times </span><i
+          <i class="material-icons">slideshow</i><span class="icon-text"> {{stats.mostWatchedMovieTimes}} times </span><i
             class="material-icons">slideshow</i>
         </li>
       </div>
       <div>
         <li class="center" matTooltip="Your favorite series" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">favorite</i><span class="icon-text"> {{stats.top_series}} </span><i class="material-icons">favorite</i>
+          <i class="material-icons">favorite</i><span class="icon-text"> {{stats.mostWatchedSeries}} </span><i class="material-icons">favorite</i>
         </li>
       </div>
       <div>
         <li class="center" matTooltip="Episodes watched of your favorite series" aria-label="Button that displays a tooltip when focused or hovered over">
-          <i class="material-icons">grade</i><span class="icon-text"> {{stats.top_series_episodes}} episodes</span><i
+          <i class="material-icons">grade</i><span class="icon-text"> {{stats.mostWatchedSeriesEpisodes}} episodes</span><i
             class="material-icons">grade</i>
         </li>
       </div>
       <div>
         <li class="center" matTooltip="Hours spent watching your favorite series" aria-label="Button that displays a tooltip when focused or hovered over">
           <i class="material-icons">hourglass_empty</i><span class="icon-text">
-            {{(stats.top_series_total_time).toFixed(1)}} hours spent </span><i class="material-icons">hourglass_empty</i>
+            {{(stats.mostWatchedSeriesTotalTime).toFixed(1)}} hours spent </span><i class="material-icons">hourglass_empty</i>
         </li>
       </div>
     </ul>
