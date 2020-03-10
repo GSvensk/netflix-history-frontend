@@ -1,12 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BackendClientService } from '../../parser/backend-client.service';
-import { FormatService } from 'src/app/parser/format-service/format.service';
 
 
 @Component({
   selector: 'app-fake-stats-button',
-  templateUrl: './fake-stats-button.component.html',
-  styleUrls: ['./fake-stats-button.component.css']
+  templateUrl: './fake-stats-button.component.html'
 })
 export class FakeStatsButtonComponent implements OnInit {
 
