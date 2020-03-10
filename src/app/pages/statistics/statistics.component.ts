@@ -19,8 +19,7 @@ export class StatisticsComponent implements OnInit {
       this.titlesConsumed = titles;
     })
 
-    this.backendClient.statistics.subscribe((data: JSONstats) => {
-
+    this.backendClient.stats.subscribe((data: JSONstats) => {
       if (data) {
         this.stats = data;
         console.log(data);
