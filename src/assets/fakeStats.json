@@ -1,0 +1,44 @@
+{
+    "totalTime": 90194,
+    "notFound": 7,
+    "movies": 318,
+    "longestBinge": 2000,
+    "longestBingeDate": "2019-02-24",
+    "weekdays": [
+      22799,
+      10937,
+      10503,
+      12066,
+      8018,
+      9263,
+      16608
+    ],
+    "months": [
+      13396,
+      11721,
+      9178,
+      4311,
+      3320,
+      7471,
+      4070,
+      5184,
+      4986,
+      7132,
+      8780,
+      10645
+    ],
+    "years": {
+      "2016": 17089,
+      "2017": 14291,
+      "2018": 17360,
+      "2019": 24902,
+      "2013": 963,
+      "2014": 2630,
+      "2015": 12338
+    },
+    "mostWatchedSeries": "Modern Family",
+    "mostWatchedSeriesEpisodes": 210,
+    "mostWatchedSeriesTotalTime": 5250,
+    "mostWatchedMovie": "The Seven Deadly Sins",
+    "mostWatchedMovieTimes": 24
+  }

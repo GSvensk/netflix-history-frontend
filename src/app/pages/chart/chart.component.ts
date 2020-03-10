@@ -99,7 +99,7 @@ export class ChartComponent implements OnInit {
 
   constructor(private backendClient: BackendClientService) {
 
-    this.backendClient.statistics.subscribe((data: JSONstats) => {
+    this.backendClient.stats.subscribe((data: JSONstats) => {
       if (data) {
         this.weekdays[0].data = data.weekdays;
         this.months[0].data = data.months;
@@ -113,7 +113,7 @@ export class ChartComponent implements OnInit {
       ([key, value]) => {
         this.yearColors[0].backgroundColor.push(this.barColor);
         this.yearLabels.push(key)
-        this.years[0].data.push(value/60)
+        this.years[0].data.push(value)
       }
     );
   }

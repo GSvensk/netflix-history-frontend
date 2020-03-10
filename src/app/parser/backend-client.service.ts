@@ -4,6 +4,9 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { JSONstats } from '../parser/JSONstats.model';
 
+import fakeStats from '../../assets/fakeStats.json';
+import { FormatService } from './format-service/format.service';
+
 class req {
   items: Map<string, string>;
   constructor(body: Map<string, string>) {
@@ -26,20 +29,21 @@ export class BackendClientService {
     })
   };
 
-  constructor(private http: HttpClient) { }
-
-  get statistics() {
-    return this.stats;
-  }
-
+  constructor(private http: HttpClient, private formatter : FormatService) { }
+  
   get titlesWatched() {
     return this.titlesConsumed;
   }
 
+  readFakeResults() {
+    const formattedFakeStats = this.formatter.format(fakeStats);
+    this.stats = of(formattedFakeStats);
+  }
+
   getResults(title: Map<string, string>) {
-    let items = new req(title);
+    const items = new req(title);
     console.log(items);
-    return this.http.post("http://localhost:5000/parse", items, this.httpOptions);
+    return this.http.post("http://localhost:8080/statistics", title, this.httpOptions);
     // https://netflix-activity-api.herokuapp.com/parse
   }
 }

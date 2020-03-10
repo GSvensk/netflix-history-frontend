@@ -1,15 +1,15 @@
 export interface JSONstats {
-    runtime: number;
-    not_found: number;
+    totalTime: number;
+    notFound: number;
     movies: number;
-    highscore: number;
-    highscoreDate: Date;
+    longestBinge: number;
+    longestBingeDate: string;
     weekdays: number[];
     months: number[];
     years: Object;
-    top_series: string;
-    top_series_episodes: number;
-    top_series_total_time: number;
-    top_movie: string;
-    top_movie_times: number;
+    mostWatchedSeries: string;
+    mostWatchedSeriesEpisodes: number;
+    mostWatchedSeriesTotalTime: number;
+    mostWatchedMovie: string;
+    mostWatchedMovieTimes: number;
 }
