@@ -2,29 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { JSONstats } from '../parser/JSONstats.model';
+import { JSONstats } from '../../models/JSONstats.model';
 
-import fakeStats from '../../assets/fakeStats.json';
-import { FormatService } from './format-service/format.service';
+import fakeStats from '../../../assets/fakeStats.json';
+import { FormatService } from '../format/format.service';
 
 import { EMPTY } from 'rxjs'
 
-import { environment } from './../../environments/environment';
-
-class req {
-  items: Map<string, string>;
-  constructor(body: Map<string, string>) {
-    this.items = body;
-  }
-}
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BackendClientService {
+export class GatewayService {
 
   stats: Observable<JSONstats> = of(null);
-  titlesConsumed: Observable<number> = of(null);
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -32,11 +24,7 @@ export class BackendClientService {
     })
   };
 
-  constructor(private http: HttpClient, private formatter : FormatService) { }
-  
-  get titlesWatched() {
-    return this.titlesConsumed;
-  }
+  constructor(private http: HttpClient, private formatter: FormatService) { }
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
@@ -52,7 +40,7 @@ export class BackendClientService {
     if (environment.production) {
       console.log("post");
       return this.http.post("http://localhost:8080//archive/statistics", titles, this.httpOptions);
-    } 
+    }
     return EMPTY;
   }
 }

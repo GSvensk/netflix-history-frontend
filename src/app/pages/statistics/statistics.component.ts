@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendClientService } from '../../parser/backend-client.service';
-import { JSONstats } from '../../parser/JSONstats.model';
+import { StateService } from '../../services/state/state.service';
+import { JSONstats } from '../../models/JSONstats.model';
+import { GatewayService } from 'src/app/services/gateway/gateway.service';
 
 @Component({
   selector: 'app-statistics',
@@ -11,18 +12,16 @@ export class StatisticsComponent implements OnInit {
   titlesConsumed: number;
   stats: JSONstats;
 
-  constructor(private backendClient: BackendClientService) { }
+  constructor(private state: StateService, private gateway: GatewayService) { }
 
   ngOnInit() {
-
-    this.backendClient.titlesWatched.subscribe((titles: number) => {
+    this.state.titles.subscribe((titles: number) => {
       this.titlesConsumed = titles;
     })
 
-    this.backendClient.stats.subscribe((data: JSONstats) => {
+    this.gateway.stats.subscribe((data: JSONstats) => {
       if (data) {
         this.stats = data;
-        console.log(data);
       }
     })
   }

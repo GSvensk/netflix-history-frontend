@@ -9,7 +9,7 @@ import { PapaParseModule } from 'ngx-papaparse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { BackendClientService } from './parser/backend-client.service';
+import { GatewayService } from './services/gateway/gateway.service';
 import { PagesModule } from './pages/pages.module';
 
 
@@ -27,7 +27,7 @@ import { PagesModule } from './pages/pages.module';
     MatToolbarModule,
     MatButtonModule
   ],
-  providers: [BackendClientService],
+  providers: [GatewayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

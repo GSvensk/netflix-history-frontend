@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BackendClientService } from '../../parser/backend-client.service';
+import { GatewayService } from '../../services/gateway/gateway.service';
+import { StateService } from 'src/app/services/state/state.service';
 
 
 @Component({
@@ -8,9 +9,7 @@ import { BackendClientService } from '../../parser/backend-client.service';
 })
 export class FakeStatsButtonComponent implements OnInit {
 
-  @Output() upload: EventEmitter<any> = new EventEmitter();
-
-  constructor(private backendClient: BackendClientService) { }
+  constructor(private backendClient: GatewayService, private state: StateService) { }
 
   ngOnInit() {
   }
@@ -18,6 +17,6 @@ export class FakeStatsButtonComponent implements OnInit {
   onClickMe() {
     console.log("clicked");
     this.backendClient.readFakeResults()
-    this.upload.emit(null);
+    this.state.upload();
   }
 }

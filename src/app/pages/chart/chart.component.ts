@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendClientService } from '../../parser/backend-client.service';
-import { JSONstats } from 'src/app/parser/JSONstats.model';
+import { GatewayService } from '../../services/gateway/gateway.service';
+import { JSONstats } from 'src/app/models/JSONstats.model';
 import { BarChartData } from './barChartData.model';
 
 @Component({
@@ -97,7 +97,7 @@ export class ChartComponent implements OnInit {
     { backgroundColor: new Array(12).fill(this.barColor) }
   ]
 
-  constructor(private backendClient: BackendClientService) {
+  constructor(private backendClient: GatewayService) {
 
     this.backendClient.stats.subscribe((data: JSONstats) => {
       if (data) {
