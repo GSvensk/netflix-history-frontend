@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JSONstats } from '../JSONstats.model';
+import { JSONstats } from '../../models/JSONstats.model';
 
 @Injectable({
   providedIn: 'root'

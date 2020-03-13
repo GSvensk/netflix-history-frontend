@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
   selector: 'app-landingpage',
@@ -9,19 +10,11 @@ export class LandingpageComponent implements OnInit {
 
   upload: boolean = false;
   loading: boolean = false;
-  titles: number;
 
-  constructor() { }
+  constructor(private state: StateService) { }
 
   ngOnInit() {
-  }
-
-  onLoad(length) {
-    this.titles = length;
-    this.loading = !this.loading;
-  }
-
-  onUpload() {
-    this.upload = true;
+    this.state.hasUpload.subscribe(upload => this.upload = upload);
+    this.state.isLoading.subscribe(loading => this.loading = loading);
   }
 }

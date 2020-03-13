@@ -7,20 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
-  @Output() upload: EventEmitter<any> = new EventEmitter();
-  @Output() load: EventEmitter<any> = new EventEmitter();
-
-
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onUpload() {
-    this.upload.emit(null);
-  }
-
-  onLoad(length) {
-    this.load.emit(length);
   }
 }

@@ -11,7 +11,7 @@ import { InformationComponent } from './information/information.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { ParseModule } from '../parser/parse.module';
+import { ServiceModule } from '../services/service.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
 
@@ -39,7 +39,7 @@ const routes: Routes = [
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    ParseModule,
+    ServiceModule,
     MatTooltipModule,
     SharedModule
   ],

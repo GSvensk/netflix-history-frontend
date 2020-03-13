@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BackendClientService } from './backend-client.service';
+import { ParseService } from './parse.service';
 
-describe('BackendClientService', () => {
+describe('ParseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BackendClientService = TestBed.get(BackendClientService);
+    const service: ParseService = TestBed.get(ParseService);
     expect(service).toBeTruthy();
   });
 });
