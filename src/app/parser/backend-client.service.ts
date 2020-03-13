@@ -7,6 +7,10 @@ import { JSONstats } from '../parser/JSONstats.model';
 import fakeStats from '../../assets/fakeStats.json';
 import { FormatService } from './format-service/format.service';
 
+import { EMPTY } from 'rxjs'
+
+import { environment } from './../../environments/environment';
+
 class req {
   items: Map<string, string>;
   constructor(body: Map<string, string>) {
@@ -24,8 +28,7 @@ export class BackendClientService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json'
     })
   };
 
@@ -40,10 +43,16 @@ export class BackendClientService {
     this.stats = of(formattedFakeStats);
   }
 
-  getResults(title: Map<string, string>) {
-    const items = new req(title);
-    console.log(items);
-    return this.http.post("http://localhost:8080/statistics", title, this.httpOptions);
+  getResults(titles: Map<string, string>) {
+    return this.http.post("http://localhost:8080/statistics", titles, this.httpOptions);
     // https://netflix-activity-api.herokuapp.com/parse
+  }
+
+  postStatistics(titles: Map<string, string>) {
+    if (environment.production) {
+      console.log("post");
+      return this.http.post("http://localhost:8080//archive/statistics", titles, this.httpOptions);
+    } 
+    return EMPTY;
   }
 }
