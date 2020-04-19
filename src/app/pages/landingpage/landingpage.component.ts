@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from 'src/app/services/state/state.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-landingpage',
@@ -10,6 +11,7 @@ export class LandingpageComponent implements OnInit {
 
   upload: boolean = false;
   loading: boolean = false;
+  production: boolean = environment !== undefined ? environment.production : false;
 
   constructor(private state: StateService) { }
 

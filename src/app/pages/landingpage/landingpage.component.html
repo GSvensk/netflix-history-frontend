@@ -1,6 +1,6 @@
 <div class="single-page-component">
   <app-instructions></app-instructions>
-  <app-fake-stats-button></app-fake-stats-button>
+  <app-fake-stats-button *ngIf="!production" ></app-fake-stats-button>
 </div>
 <div
   [ngClass]="loading || upload ? 'single-page-component' : 'hide'"
