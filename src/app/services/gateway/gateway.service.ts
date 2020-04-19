@@ -33,13 +33,12 @@ export class GatewayService {
 
   getResults(titles: Map<string, string>) {
     return this.http.post("http://localhost:8080/statistics", titles, this.httpOptions);
-    // https://netflix-activity-api.herokuapp.com/parse
   }
 
   postStatistics(titles: Map<string, string>) {
     if (environment.production) {
       console.log("post");
-      return this.http.post("http://localhost:8080//archive/statistics", titles, this.httpOptions);
+      return this.http.post("http://localhost:8080/archive/statistics", titles, this.httpOptions);
     }
     return EMPTY;
   }
