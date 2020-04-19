@@ -34,7 +34,7 @@ export class ChartComponent implements OnInit {
   public yearTitle: any = {
     title: {
       display: true,
-      text: 'Total Hours per Year',
+      text: 'Hours per Year',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
     }
   }
@@ -42,7 +42,7 @@ export class ChartComponent implements OnInit {
   public monthTitle: any = {
     title: {
       display: true,
-      text: 'Total Hours per Month',
+      text: 'Hours per Month',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
     }
   }
@@ -50,7 +50,7 @@ export class ChartComponent implements OnInit {
   public dayTitle: any = {
     title: {
       display: true,
-      text: 'Total Hours per Day',
+      text: 'Hours per Day',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
     }
   }
@@ -63,9 +63,9 @@ export class ChartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
   };
-  public weekdayLabels: string[] = ['Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  public monthLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-    'September', 'October', 'Novemeber', 'December'];
+  public weekdayLabels: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  public monthLabels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug',
+    'Sep', 'Oct', 'Nov', 'Dec'];
   public yearLabels: string[] = [];
 
   public barChartType: string = 'bar';
