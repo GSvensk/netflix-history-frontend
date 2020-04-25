@@ -1,4 +1,5 @@
 export interface JSONstats {
+    titles: number;
     totalTime: number;
     notFound: number;
     movies: number;
