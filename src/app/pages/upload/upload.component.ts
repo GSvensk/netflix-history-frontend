@@ -19,7 +19,6 @@ export class UploadComponent implements OnInit {
   ngOnInit() { }
 
   uploadFile($event) {
-    //console.log($event.target.files[0]); // outputs the first file
     this.scroller.triggerScrollTo();
     this.parseService.parse($event);
   }

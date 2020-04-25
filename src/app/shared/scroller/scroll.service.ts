@@ -9,11 +9,6 @@ export class ScrollService {
   constructor(private _scrollToService: ScrollToService) { }
 
   public triggerScrollTo() {
-
-    const config: ScrollToConfigOptions = {
-      target: 'spinner'
-    };
-
-    this._scrollToService.scrollTo(config);
+    this._scrollToService.scrollTo({target: 'spinner'});
   }
 }
