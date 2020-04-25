@@ -42,17 +42,16 @@ export class ParseService {
     this.gatewayService
       .postStatistics(json)
       .toPromise()
-      .catch(console.log);
+      .catch(console.error);
 
     this.gatewayService.getResults(json).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
-        console.log("data received");
         this.gatewayService.stats = of(data);
         this.stopLoading();
       },
       error => {
-        console.log(error);
+        console.error(error);
         this.stopLoading();
       }
     );
