@@ -14,6 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ServiceModule } from '../services/service.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
+import { GeneralComponent } from './statistics/categories/general/general.component';
+import { StatComponent } from './statistics/categories/stat/stat.component';
+import { MoviesComponent } from './statistics/categories/movies/movies.component';
+import { SeriesComponent } from './statistics/categories/series/series.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -28,7 +32,11 @@ const routes: Routes = [
     ChartComponent,
     StatisticsComponent,
     InformationComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    GeneralComponent,
+    StatComponent,
+    MoviesComponent,
+    SeriesComponent
   ],
   imports: [
     CommonModule,
