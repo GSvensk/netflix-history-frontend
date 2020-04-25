@@ -13,22 +13,18 @@ export class StateService {
   constructor() { }
 
   upload() {
-    console.log("upload")
     this.hasUpload.next(true);
   }
 
   removeUpload() {
-    console.log("not uplöoad")
-      this.hasUpload.next(false);
+    this.hasUpload.next(false);
   }
 
   load() {
-    console.log("load")
     this.isLoading.next(true);
   }
 
   stopLoad() {
-    console.log("stop load")
     this.isLoading.next(false);
   }
 
