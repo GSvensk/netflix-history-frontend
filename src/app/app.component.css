@@ -1,9 +1,0 @@
-#navbar {
-    background-color: var(--detail-color);
-    margin-bottom: 0;
-    font-size: 28px;
-}
-
-.mat-toolbar-single-row {
-    padding: 0 24%;
-}
