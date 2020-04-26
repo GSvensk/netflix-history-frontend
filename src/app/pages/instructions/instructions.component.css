@@ -34,7 +34,7 @@
 }
 
 .mat-list .mat-list-item {
-    font-size: 28px;
+    font-size: var(--font-size-medium);
 }
 
 #loadbutton {
@@ -42,7 +42,7 @@
 }
 
 #lang {
-    font-size: 18px;
+    font-size: var(--font-size-small);
 }
 
 .litem {
