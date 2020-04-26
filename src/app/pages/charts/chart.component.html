@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="grid-1-2 callout">
+    <app-quickstats></app-quickstats>
+    <app-linechart></app-linechart>
+  </div>
+
+  <div class="grid-3 callout">
+    <div class="mat-elevation-z4 chart-container">
+      <canvas
+        baseChart
+        class="box"
+        [datasets]="months"
+        [labels]="monthLabels"
+        [options]="MonthChartOptions"
+        [legend]="barChartLegend"
+        [colors]="monthColors"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="grid-4 callout">
+    <div class="mat-elevation-z4 chart-container">
+      <canvas
+        baseChart
+        class="box"
+        [datasets]="years"
+        [labels]="yearLabels"
+        [options]="YearChartOptions"
+        [legend]="barChartLegend"
+        [colors]="yearColors"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="grid-5 callout">
+    <div class="mat-elevation-z4 chart-container">
+      <canvas
+        baseChart
+        class="box"
+        [datasets]="weekdays"
+        [labels]="weekdayLabels"
+        [options]="DayChartOptions"
+        [legend]="barChartLegend"
+        [colors]="chartColors"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="grid-6 callout">
+    <div class="mat-elevation-z4 chart-container">
+      <canvas
+        baseChart
+        class="box"
+        [datasets]="weekdays"
+        [labels]="weekdayLabels"
+        [options]="DayChartOptions"
+        [legend]="barChartLegend"
+        [colors]="chartColors"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
+</div>
