@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { UploadComponent } from './upload/upload.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from './charts/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
 import { StatisticsComponent } from './quickstats/statistics.component';
@@ -19,6 +19,8 @@ import { StatComponent } from './quickstats/categories/stat/stat.component';
 import { MoviesComponent } from './quickstats/categories/movies/movies.component';
 import { SeriesComponent } from './quickstats/categories/series/series.component';
 import { QuickstatsComponent } from './quickstats/quickstats.component';
+import { LinechartComponent } from './charts/linechart/linechart.component';
+import { BarchartComponent } from './charts/barchart/barchart.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -38,7 +40,9 @@ const routes: Routes = [
     StatComponent,
     MoviesComponent,
     SeriesComponent,
-    QuickstatsComponent
+    QuickstatsComponent,
+    LinechartComponent,
+    BarchartComponent
   ],
   imports: [
     CommonModule,
