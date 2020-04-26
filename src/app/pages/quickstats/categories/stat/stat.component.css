@@ -1,0 +1,7 @@
+#stat-number {
+    font-size: var(--font-size-large);
+}
+
+#stat-name {
+    font-size: var(--font-size-small);
+}

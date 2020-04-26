@@ -23,7 +23,7 @@
             {{stats.longestBingeDate}} </span><i class="material-icons">whatshot</i>
         </li>
       </div>
-      <div *ngIf="stats.notFound == 0">
+      <div *ngIf="stats.notFound === 0">
         <li class="center" matTooltip="Number of titles for which no runtime was found" aria-label="Button that displays a tooltip when focused or hovered over">
           <i class="material-icons">error</i><span class="icon-text"> {{stats.notFound}} titles not found </span><i
             class="material-icons">error</i>
