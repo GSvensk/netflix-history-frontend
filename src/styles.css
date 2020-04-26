@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./../node_modules/@angular/material/prebuilt-themes/purple-green.css"; 
+@import "./../node_modules/@angular/material/prebuilt-themes/purple-green.css";
 
 :root {
   --primary-color: #db0000;
@@ -7,9 +7,14 @@
   --text-color: #ffffff;
   --background-color: #564d4d;
   --detail-color: #831010;
+
+  --font-size-small: 1vw;
+  --font-size-medium: 2vw;
+  --font-size-large: 3vw;
 }
 
-html, body { 
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -18,7 +23,6 @@ html, body {
   color: var(--text-color);
 }
 
-.single-page-component{
-    min-height: 100vh;
-  }
-
+.single-page-component {
+  min-height: 100vh;
+}
