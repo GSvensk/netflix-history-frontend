@@ -3,6 +3,13 @@ import { GatewayService } from '../../services/gateway/gateway.service';
 import { JSONstats } from 'src/app/models/JSONstats.model';
 import { BarChartData } from './barChartData.model';
 
+
+enum FontSize {
+  small = "small",
+  medium = "medium",
+  large = "large"
+}
+
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -11,6 +18,7 @@ import { BarChartData } from './barChartData.model';
 export class ChartComponent implements OnInit {
 
   barColor: string = '#db0000';
+  chartTitleFontSize = 24; 
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -36,6 +44,7 @@ export class ChartComponent implements OnInit {
       display: true,
       text: 'Hours per Year',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
+      fontSize: this.chartTitleFontSize
     }
   }
 
@@ -44,6 +53,7 @@ export class ChartComponent implements OnInit {
       display: true,
       text: 'Hours per Month',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
+      fontSize: this.chartTitleFontSize
     }
   }
 
@@ -52,6 +62,7 @@ export class ChartComponent implements OnInit {
       display: true,
       text: 'Hours per Day',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
+      fontSize: this.chartTitleFontSize
     }
   }
 
@@ -69,6 +80,7 @@ export class ChartComponent implements OnInit {
   public yearLabels: string[] = [];
 
   public barChartType: string = 'bar';
+  public lineChartType: string = 'line';
   public barChartLegend: boolean = true;
 
   public weekdays: BarChartData[] = [
@@ -124,6 +136,12 @@ export class ChartComponent implements OnInit {
 
   public chartHovered(e: any): void {
     console.log(e);
+  }
+
+  private fontSizeToPixels(fontSize: FontSize) {
+    let sizeInVws = getComputedStyle(document.documentElement).getPropertyValue(`--font-size-${fontSize}`);
+    let vws = +sizeInVws.substring(0, sizeInVws.length - 2);
+    return vws * document.documentElement.clientWidth / 100;
   }
 
   ngOnInit() {

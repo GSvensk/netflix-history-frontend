@@ -57,4 +57,22 @@
       ></canvas>
     </div>
   </div>
+
+
+  <div class="grid-3 callout">
+    <div class="mat-elevation-z4 chart-container">
+      <canvas
+        baseChart
+        class="box"
+        [datasets]="months"
+        [labels]="monthLabels"
+        [options]="MonthChartOptions"
+        [legend]="barChartLegend"
+        [colors]="monthColors"
+        [chartType]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
 </div>
