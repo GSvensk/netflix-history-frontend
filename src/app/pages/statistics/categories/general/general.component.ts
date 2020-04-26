@@ -4,7 +4,7 @@ import { JSONstats } from '../../../../models/JSONstats.model';
 
 
 @Component({
-  selector: 'app-category',
+  selector: 'stat-general',
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.css']
 })
