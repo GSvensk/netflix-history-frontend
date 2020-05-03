@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --prod && cp dist/netflix-activity/assets/pexels-photo-758976.jpeg ../netflix-history-spring/src/main/resources/public/assets && cp -r dist/netflix-activity/. ../netflix-history-spring/src/main/resources/public",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
