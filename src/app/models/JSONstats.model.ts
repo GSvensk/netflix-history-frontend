@@ -8,6 +8,7 @@ export interface JSONstats {
     weekdays: number[];
     months: number[];
     years: Object;
+    monthly: Object;
     mostWatchedSeries: string;
     mostWatchedSeriesEpisodes: number;
     mostWatchedSeriesTotalTime: number;
