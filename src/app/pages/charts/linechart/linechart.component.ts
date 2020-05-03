@@ -10,8 +10,18 @@ import { JSONstats } from 'src/app/models/JSONstats.model';
 })
 export class LinechartComponent implements OnInit {
 
-  public lineChartType = 'line';
-  barColor: string = '#db0000';
+  lineChartType = 'line';
+  lineColor: string = '#db0000';
+  legend: boolean = true;
+
+  parseMonthly(monthly: Object) {
+    Object.entries(monthly).forEach(
+      ([key, value]) => {
+        this.monthLabels.push(key)
+        this.months[0].data.push(value)
+      }
+    );
+  }
 
   colors: Color[] = [
     { // red
@@ -24,7 +34,7 @@ export class LinechartComponent implements OnInit {
     }
   ];
 
-  public barChartOptions: any = {
+  lineChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: {
@@ -43,7 +53,7 @@ export class LinechartComponent implements OnInit {
     }
   };
 
-  public title: any = {
+  title: any = {
     title: {
       display: true,
       text: 'Total runtime',
@@ -53,23 +63,31 @@ export class LinechartComponent implements OnInit {
   }
 
   public months: any[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Hours' }
+    { data: [], label: 'Hours' }
   ];
-  public monthLabels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug',
-    'Sep', 'Oct', 'Nov', 'Dec'];
+  public monthLabels: string[] = [];
 
-  public chartColors: any[] = [
+  chartColors: any[] = [
     {
-      backgroundColor: new Array(7).fill(this.barColor)
+      backgroundColor: new Array(7).fill(this.lineColor)
     }
   ]
 
-  public MonthChartOptions: any = {...this.barChartOptions, ...this.title};
+  // events
+  chartClicked(e: any): void {
+
+  }
+
+  chartHovered(e: any): void {
+
+  }
+
+  MonthChartOptions: any = { ...this.lineChartOptions, ...this.title };
 
   constructor(private gateway: GatewayService) {
     this.gateway.stats.subscribe((data: JSONstats) => {
       if (data) {
-        this.months[0].data = data.months;
+        this.parseMonthly(data.monthly);
       }
     })
   }
