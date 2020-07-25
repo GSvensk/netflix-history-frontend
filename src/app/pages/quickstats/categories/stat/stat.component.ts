@@ -10,6 +10,7 @@ export class StatComponent implements OnInit {
 
   @Input() number: number
   @Input() name: string
+  @Input() unit?: string
 
   constructor() { }
 
