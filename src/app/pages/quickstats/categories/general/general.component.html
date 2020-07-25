@@ -1,5 +1,5 @@
 <div>
-  <app-stat name="Total number of hours watched" number={{(stats.totalTime).toFixed(1)}}></app-stat>  
+  <app-stat name="Total viewing time" number={{(stats.totalTime).toFixed(0)}} unit="h"></app-stat>  
   <app-stat name="Combined number of movies and tv-series episodes" number="{{stats.titles}}"></app-stat>  
-  <app-stat name="Longest Binge" number={{(stats.longestBinge).toFixed(1)}}></app-stat>  
+  <app-stat name="Longest Binge" number={{(stats.longestBinge).toFixed(1)}} unit="h"></app-stat>  
 </div>
