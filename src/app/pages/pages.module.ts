@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartComponent } from './charts/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
-import { StatisticsComponent } from './quickstats/statistics.component';
 import { InformationComponent } from './information/information.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { MatListModule } from '@angular/material/list';
@@ -33,7 +32,6 @@ const routes: Routes = [
     LandingpageComponent,
     UploadComponent,
     ChartComponent,
-    StatisticsComponent,
     InformationComponent,
     InstructionsComponent,
     GeneralComponent,
