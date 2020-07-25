@@ -112,8 +112,8 @@ export class ChartComponent implements OnInit {
 
     this.backendClient.stats.subscribe((data: JSONstats) => {
       if (data) {
-        this.weekdays[0].data = data.weekdays;
-        this.months[0].data = data.months;
+        this.weekdays[0].data = data.weekdays.map(x => x / 60);
+        this.months[0].data = data.months.map(x => x / 60);
         this.parseYears(data.years);
       }
     })
@@ -124,7 +124,7 @@ export class ChartComponent implements OnInit {
       ([key, value]) => {
         this.yearColors[0].backgroundColor.push(this.barColor);
         this.yearLabels.push(key)
-        this.years[0].data.push(value)
+        this.years[0].data.push(value / 60)
       }
     );
   }

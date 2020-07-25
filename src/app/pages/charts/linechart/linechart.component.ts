@@ -18,7 +18,7 @@ export class LinechartComponent implements OnInit {
     Object.entries(monthly).forEach(
       ([key, value]) => {
         this.monthLabels.push(key)
-        this.months[0].data.push(value)
+        this.months[0].data.push(value / 60)
       }
     );
   }
