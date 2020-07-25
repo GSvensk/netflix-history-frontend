@@ -42,7 +42,7 @@ export class ChartComponent implements OnInit {
   public yearTitle: any = {
     title: {
       display: true,
-      text: 'Hours per Year',
+      text: 'Viewing Time per Year',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
       fontSize: this.chartTitleFontSize
     }
@@ -51,7 +51,7 @@ export class ChartComponent implements OnInit {
   public monthTitle: any = {
     title: {
       display: true,
-      text: 'Hours per Month',
+      text: 'Viewing Time per Month',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
       fontSize: this.chartTitleFontSize
     }
@@ -60,7 +60,7 @@ export class ChartComponent implements OnInit {
   public dayTitle: any = {
     title: {
       display: true,
-      text: 'Hours per Day',
+      text: 'Viewing Time per Weekday',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
       fontSize: this.chartTitleFontSize
     }

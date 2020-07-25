@@ -56,7 +56,7 @@ export class LinechartComponent implements OnInit {
   title: any = {
     title: {
       display: true,
-      text: 'Total runtime',
+      text: 'Viewing Time',
       fontColor: 'white',  // chart title color (can be hexadecimal too)
       fontSize: 24
     }
