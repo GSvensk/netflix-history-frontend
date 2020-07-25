@@ -19,7 +19,7 @@ export class ParseService {
     this.papa.parse(
       $event.target.files[0],
       {
-        complete: result => {
+        complete: result => {        
           this.parseFile(result["data"]);
         }
       }
@@ -27,7 +27,6 @@ export class ParseService {
   }
 
   parseFile(content: string[][]) {
-    console.log("parsing file")
     content.shift();
     content.pop();
     this.state.numberOfTitles = content.length;

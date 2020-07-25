@@ -37,7 +37,6 @@ export class GatewayService {
 
   postStatistics(titles: Map<string, string>) {
     if (environment.production) {
-      console.log("post");
       return this.http.post("http://localhost:8080/archive/statistics", titles, this.httpOptions);
     }
     return EMPTY;
