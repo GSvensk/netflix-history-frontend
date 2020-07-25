@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Color } from 'ng2-charts';
 import { GatewayService } from '../../../services/gateway/gateway.service';
 import { JSONstats } from 'src/app/models/JSONstats.model';
+import { MonthlyViewingTime } from 'src/app/models/MonthlyViewingTime';
 
 @Component({
   selector: 'app-linechart',
@@ -14,11 +15,10 @@ export class LinechartComponent implements OnInit {
   lineColor: string = '#db0000';
   legend: boolean = true;
 
-  parseMonthly(monthly: Object) {
-    Object.entries(monthly).forEach(
-      ([key, value]) => {
-        this.monthLabels.push(key)
-        this.months[0].data.push(value / 60)
+  parseMonthly(monthly: MonthlyViewingTime[]) {
+    monthly.forEach((month) => {  
+        this.monthLabels.push(month.date)
+        this.months[0].data.push(month.runtime / 60)
       }
     );
   }

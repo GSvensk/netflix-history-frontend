@@ -1,3 +1,5 @@
+import { MonthlyViewingTime } from "./MonthlyViewingTime";
+
 export interface JSONstats {
     titles: number;
     totalTime: number;
@@ -8,7 +10,7 @@ export interface JSONstats {
     weekdays: number[];
     months: number[];
     years: Object;
-    monthly: Object;
+    monthly: MonthlyViewingTime[];
     mostWatchedSeries: string;
     mostWatchedSeriesEpisodes: number;
     mostWatchedSeriesTotalTime: number;
