@@ -45,6 +45,14 @@
     font-size: var(--font-size-small);
 }
 
+#viewing-history {
+    color: var(--text-color);    
+}
+
+#viewing-history:hover {
+    background-color: var(--detail-color)
+}
+
 .litem {
     margin-bottom: 2%;
 }
