@@ -34,7 +34,7 @@ export class GatewayService {
   getResults(titles: Map<string, string>) {
     //TODO: read in url via config
     if (environment.production) {
-      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com:8080/statistics", titles, this.httpOptions);
+      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com/statistics", titles, this.httpOptions);
     }
 
     return this.http.post("http://localhost:8080/statistics", titles, this.httpOptions);
@@ -42,7 +42,7 @@ export class GatewayService {
 
   postStatistics(titles: Map<string, string>) {
     if (environment.production) {
-      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com:8080/statistics", titles, this.httpOptions);
+      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com/statistics", titles, this.httpOptions);
     }
     return EMPTY;
   }
