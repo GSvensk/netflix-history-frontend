@@ -6,10 +6,9 @@ import { JSONstats } from '../../models/JSONstats.model';
 
 import fakeStats from '../../../assets/fakeStats.json';
 import { FormatService } from '../format/format.service';
+import { EnvService } from '../../env.service';
 
 import { EMPTY } from 'rxjs'
-
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,7 @@ export class GatewayService {
     })
   };
 
-  constructor(private http: HttpClient, private formatter: FormatService) { }
+  constructor(private http: HttpClient, private formatter: FormatService, private env: EnvService) {}
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
@@ -32,18 +31,10 @@ export class GatewayService {
   }
 
   getResults(titles: Map<string, string>) {
-    //TODO: read in url via config
-    if (environment.production) {
-      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com/statistics", titles, this.httpOptions);
-    }
-
-    return this.http.post("http://localhost:8080/statistics", titles, this.httpOptions);
+    return this.http.post(`http://${this.env.apiUrl}/statistics`, titles, this.httpOptions);
   }
 
   postStatistics(titles: Map<string, string>) {
-    if (environment.production) {
-      return this.http.post("http://ec2-34-245-63-131.eu-west-1.compute.amazonaws.com/statistics", titles, this.httpOptions);
-    }
     return EMPTY;
   }
 }

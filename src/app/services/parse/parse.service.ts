@@ -38,11 +38,11 @@ export class ParseService {
       json[item[0]] = item[1];
     });
 
-    this.gatewayService
+    /* this.gatewayService
       .postStatistics(json)
       .toPromise()
       .catch(console.error);
-
+ */
     this.gatewayService.getResults(json).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);

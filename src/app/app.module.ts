@@ -11,6 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { GatewayService } from './services/gateway/gateway.service';
 import { PagesModule } from './pages/pages.module';
+import { EnvServiceProvider } from './env.service.provider';
+
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { PagesModule } from './pages/pages.module';
     MatToolbarModule,
     MatButtonModule
   ],
-  providers: [GatewayService],
+  providers: [GatewayService,EnvServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
