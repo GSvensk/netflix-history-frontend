@@ -1,0 +1,14 @@
+<div class="mat-elevation-z4 chart-container">
+  <canvas
+    baseChart
+    class="box"
+    [datasets]="years"
+    [labels]="monthLabels"
+    [options]="MonthChartOptions"
+    [legend]="legend"
+    [colors]="colors"
+    [chartType]="lineChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  ></canvas>
+</div>

@@ -20,6 +20,7 @@ import { SeriesComponent } from './quickstats/categories/series/series.component
 import { QuickstatsComponent } from './quickstats/quickstats.component';
 import { LinechartComponent } from './charts/linechart/linechart.component';
 import { BarchartComponent } from './charts/barchart/barchart.component';
+import { MultiLinechartComponent } from './charts/multi-linechart/multi-linechart.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
     SeriesComponent,
     QuickstatsComponent,
     LinechartComponent,
-    BarchartComponent
+    BarchartComponent,
+    MultiLinechartComponent
   ],
   imports: [
     CommonModule,
