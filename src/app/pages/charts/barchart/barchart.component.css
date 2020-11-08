@@ -1,0 +1,16 @@
+.box {
+  background-color: var(--secondary-color);
+}
+
+.chart-container {
+  position: relative;
+  /*height:32vh;*/
+  width: 43vw;
+}
+
+@media screen and (max-width: 60em) {
+  .chart-container {
+    /*height: 45vh;*/
+    width: 84vw;
+  }
+}

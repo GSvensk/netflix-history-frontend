@@ -4,12 +4,6 @@ import { JSONstats } from 'src/app/models/JSONstats.model';
 import { BarChartData } from './barChartData.model';
 
 
-enum FontSize {
-  small = "small",
-  medium = "medium",
-  large = "large"
-}
-
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -17,96 +11,22 @@ enum FontSize {
 })
 export class ChartComponent implements OnInit {
 
-  barColor: string = '#db0000';
-  chartTitleFontSize = 24; 
-
-  public barChartOptions: any = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-    scales: {
-      yAxes: [{
-        stacked: true,
-        gridLines: {
-          color: '#564d4d'
-        }
-      }]
-    },
-    legend: {
-      display: true,
-      labels: {
-        fontColor: 'white',
-      },
-    }
-  };
-
-  public yearTitle: any = {
-    title: {
-      display: true,
-      text: 'Viewing Time per Year',
-      fontColor: 'white',  // chart title color (can be hexadecimal too)
-      fontSize: this.chartTitleFontSize
-    }
-  }
-
-  public monthTitle: any = {
-    title: {
-      display: true,
-      text: 'Viewing Time per Month',
-      fontColor: 'white',  // chart title color (can be hexadecimal too)
-      fontSize: this.chartTitleFontSize
-    }
-  }
-
-  public dayTitle: any = {
-    title: {
-      display: true,
-      text: 'Viewing Time per Weekday',
-      fontColor: 'white',  // chart title color (can be hexadecimal too)
-      fontSize: this.chartTitleFontSize
-    }
-  }
-
-  public YearChartOptions: any = {...this.barChartOptions, ...this.yearTitle};
-  public MonthChartOptions: any = {...this.barChartOptions, ...this.monthTitle};
-  public DayChartOptions = {...this.barChartOptions, ...this.dayTitle};
-
-  public yearOptions: any = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-  };
   public weekdayLabels: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   public monthLabels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug',
     'Sep', 'Oct', 'Nov', 'Dec'];
   public yearLabels: string[] = [];
 
-  public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
-
   public weekdays: BarChartData[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0], label: 'Hours' }
+    { data: new Array(7).fill(0), label: 'Hours' }
   ];
 
-  public months: any[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Hours' }
+  public months: BarChartData[] = [
+    { data: new Array(12).fill(0), label: 'Hours' }
   ];
 
   public years: BarChartData[] = [
     { data: [], label: 'Hours' }
   ];
-
-  public chartColors: any[] = [
-    {
-      backgroundColor: new Array(7).fill(this.barColor)
-    }
-  ]
-
-  public yearColors: any[] = [
-    { backgroundColor: [] }
-  ]
-  
-  public monthColors: any[] = [
-    { backgroundColor: new Array(12).fill(this.barColor) }
-  ]
 
   constructor(private backendClient: GatewayService) {
 
@@ -122,25 +42,10 @@ export class ChartComponent implements OnInit {
   parseYears(years: Object) {
     Object.entries(years).forEach(
       ([key, value]) => {
-        this.yearColors[0].backgroundColor.push(this.barColor);
         this.yearLabels.push(key)
         this.years[0].data.push(value / 60)
       }
     );
-  }
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
-  private fontSizeToPixels(fontSize: FontSize) {
-    let sizeInVws = getComputedStyle(document.documentElement).getPropertyValue(`--font-size-${fontSize}`);
-    let vws = +sizeInVws.substring(0, sizeInVws.length - 2);
-    return vws * document.documentElement.clientWidth / 100;
   }
 
   ngOnInit() {

@@ -10,17 +10,6 @@
   margin: 2% 4%;
 }
 
-.box {
-  background-color: var(--secondary-color);
-}
-
-.chart-container {
-  position: relative;
-  /*height:32vh;*/
-  width: 43vw;
-  opacity: 0.8;
-}
-
 .callout {
   margin: 1% 1%;
 }

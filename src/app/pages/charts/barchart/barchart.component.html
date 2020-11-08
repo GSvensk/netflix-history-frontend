@@ -1,3 +1,14 @@
-<p>
-  barchart works!
-</p>
+<div class="mat-elevation-z4 chart-container">
+  <canvas
+    baseChart
+    class="box"
+    [datasets]="dataset"
+    [labels]="labels"
+    [options]="chartOptions"
+    [legend]="'true'"
+    [colors]="colors"
+    [chartType]="'bar'"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  ></canvas>
+</div>

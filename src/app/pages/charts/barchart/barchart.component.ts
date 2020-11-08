@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface BarChartData {
+  data: number[];
+  label: string;
+}
+
 
 @Component({
   selector: 'app-barchart',
@@ -7,9 +13,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarchartComponent implements OnInit {
 
-  constructor() { }
+  barColor: string = 'rgba(255,0,0,0.6)';
+  chartTitleFontSize = 24;
+  barChartType: string = 'bar';
+  barChartLegend: boolean = true;
+  chartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    scales: {
+      yAxes: [{
+        stacked: true,
+        gridLines: {
+          color: '#564d4d'
+        }
+      }]
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontColor: 'white',
+      },
+    }
+  };
 
-  ngOnInit() {
+  @Input() titleText: string
+  @Input() dataset: BarChartData[]
+  @Input() labels: string[]
+  colors: any = [
+    {
+      backgroundColor: new Array(24).fill(this.barColor)
+    }
+  ]
+
+
+  public chartClicked(e: any): void {
+    console.log(e);
   }
 
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.chartOptions = {
+      ...this.chartOptions,
+      title: {
+        display: true,
+        text: this.titleText,
+        fontColor: 'white',
+        fontSize: this.chartTitleFontSize
+      }
+    }
+  }
 }
