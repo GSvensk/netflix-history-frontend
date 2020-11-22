@@ -31,33 +31,24 @@ export class ParseService {
     content.pop();
     this.state.numberOfTitles = content.length;
     this.state.load();
-    //this.load.emit(content.length);
     const json: Map<string, string> = new Map<string, string>();
 
     content.forEach(item => {
       json[item[0]] = item[1];
     });
 
-    /* this.gatewayService
-      .postStatistics(json)
-      .toPromise()
-      .catch(console.error);
- */
     this.gatewayService.getResults(json).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
         this.gatewayService.stats = of(data);
-        this.stopLoading();
+        this.state.stopLoad();
+        this.state.upload();
       },
       error => {
+        this.state.stopLoad();
+        this.state.removeUpload();
         console.error(error);
-        this.stopLoading();
       }
     );
-  }
-
-  stopLoading() {
-    this.state.stopLoad();
-    this.state.upload();
   }
 }
