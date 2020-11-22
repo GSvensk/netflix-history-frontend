@@ -1,7 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { GatewayService } from '../../services/gateway/gateway.service';
 import { StateService } from 'src/app/services/state/state.service';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,7 +15,6 @@ export class FakeStatsButtonComponent implements OnInit {
   }
 
   onClickMe() {
-    console.log("clicked");
     this.backendClient.readFakeResults()
     this.state.upload();
   }
