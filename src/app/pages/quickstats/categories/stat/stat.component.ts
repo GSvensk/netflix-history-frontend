@@ -8,9 +8,9 @@ import { StateService } from 'src/app/services/state/state.service';
 })
 export class StatComponent implements OnInit {
 
-  @Input() number: number
-  @Input() name: string
-  @Input() unit?: string
+  @Input() number: number;
+  @Input() name: string;
+  @Input() unit?: string;
 
   constructor() { }
 

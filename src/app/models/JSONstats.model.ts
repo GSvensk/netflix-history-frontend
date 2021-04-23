@@ -1,4 +1,4 @@
-import { MonthlyViewingTime } from "./MonthlyViewingTime";
+import { MonthlyViewingTime } from './MonthlyViewingTime';
 
 export interface JSONstats {
     titles: number;

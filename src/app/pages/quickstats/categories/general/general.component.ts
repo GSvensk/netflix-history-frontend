@@ -19,6 +19,6 @@ export class GeneralComponent implements OnInit {
       if (data) {
         this.stats = data;
       }
-    })
+    });
   }
 }

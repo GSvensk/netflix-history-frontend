@@ -29,7 +29,7 @@ import { EnvServiceProvider } from './env.service.provider';
     MatToolbarModule,
     MatButtonModule
   ],
-  providers: [GatewayService,EnvServiceProvider],
+  providers: [GatewayService, EnvServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

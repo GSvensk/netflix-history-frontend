@@ -36,14 +36,14 @@ export class ChartComponent implements OnInit {
         this.months[0].data = data.months.map(x => x / 60);
         this.parseYears(data.years);
       }
-    })
+    });
   }
 
   parseYears(years: Object) {
     Object.entries(years).forEach(
       ([key, value]) => {
-        this.yearLabels.push(key)
-        this.years[0].data.push(value / 60)
+        this.yearLabels.push(key);
+        this.years[0].data.push(value / 60);
       }
     );
   }

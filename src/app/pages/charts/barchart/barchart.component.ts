@@ -13,10 +13,10 @@ interface BarChartData {
 })
 export class BarchartComponent implements OnInit {
 
-  barColor: string = 'rgba(255,0,0,0.6)';
+  barColor = 'rgba(255,0,0,0.6)';
   chartTitleFontSize = 24;
-  barChartType: string = 'bar';
-  barChartLegend: boolean = true;
+  barChartType = 'bar';
+  barChartLegend = true;
   chartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
@@ -36,14 +36,14 @@ export class BarchartComponent implements OnInit {
     }
   };
 
-  @Input() titleText: string
-  @Input() dataset: BarChartData[]
-  @Input() labels: string[]
+  @Input() titleText: string;
+  @Input() dataset: BarChartData[];
+  @Input() labels: string[];
   colors: any = [
     {
       backgroundColor: new Array(24).fill(this.barColor)
     }
-  ]
+  ];
 
 
   public chartClicked(e: any): void {
@@ -66,6 +66,6 @@ export class BarchartComponent implements OnInit {
         fontColor: 'white',
         fontSize: this.chartTitleFontSize
       }
-    }
+    };
   }
 }

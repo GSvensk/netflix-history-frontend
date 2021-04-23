@@ -15,7 +15,7 @@ export class FakeStatsButtonComponent implements OnInit {
   }
 
   onClickMe() {
-    this.backendClient.readFakeResults()
+    this.backendClient.readFakeResults();
     this.state.upload();
   }
 }

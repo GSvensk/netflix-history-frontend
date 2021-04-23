@@ -19,6 +19,6 @@ export class MoviesComponent implements OnInit {
       if (data) {
         this.stats = data;
       }
-    })
+    });
   }
 }

@@ -19,6 +19,6 @@ export class SeriesComponent implements OnInit {
       if (data) {
         this.stats = data;
       }
-    })
+    });
   }
 }

@@ -9,8 +9,8 @@ import { environment } from '../../../environments/environment';
 })
 export class LandingpageComponent implements OnInit {
 
-  upload: boolean = false;
-  loading: boolean = false;
+  upload = false;
+  loading = false;
   production: boolean = environment !== undefined ? environment.production : false;
 
   constructor(private state: StateService) { }

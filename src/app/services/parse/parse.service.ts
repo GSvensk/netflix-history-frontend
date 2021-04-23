@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { GatewayService } from '../gateway/gateway.service'
-import { FormatService } from '../format/format.service'
-import { Papa } from "ngx-papaparse";
-import { JSONstats } from "src/app/models/JSONstats.model";
+import { GatewayService } from '../gateway/gateway.service';
+import { FormatService } from '../format/format.service';
+import { Papa } from 'ngx-papaparse';
+import { JSONstats } from 'src/app/models/JSONstats.model';
 import { StateService } from '../state/state.service';
-import { of } from "rxjs";
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -19,11 +19,11 @@ export class ParseService {
     this.papa.parse(
       $event.target.files[0],
       {
-        complete: result => {        
-          this.parseFile(result["data"]);
+        complete: result => {
+          this.parseFile(result['data']);
         }
       }
-    )
+    );
   }
 
   parseFile(content: string[][]) {

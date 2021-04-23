@@ -12,16 +12,8 @@ import { MonthlyViewingTime } from 'src/app/models/MonthlyViewingTime';
 export class LinechartComponent implements OnInit {
 
   lineChartType = 'line';
-  lineColor: string = '#db0000';
-  legend: boolean = true;
-
-  parseMonthly(monthly: MonthlyViewingTime[]) {
-    monthly.forEach((month) => {  
-        this.monthLabels.push(month.date)
-        this.months[0].data.push(month.runtime / 60)
-      }
-    );
-  }
+  lineColor = '#db0000';
+  legend = true;
 
   colors: Color[] = [
     { // red
@@ -60,7 +52,7 @@ export class LinechartComponent implements OnInit {
       fontColor: 'white',  // chart title color (can be hexadecimal too)
       fontSize: 24
     }
-  }
+  };
 
   public months: any[] = [
     { data: [], label: 'Hours' }
@@ -71,7 +63,17 @@ export class LinechartComponent implements OnInit {
     {
       backgroundColor: new Array(7).fill(this.lineColor)
     }
-  ]
+  ];
+
+  MonthChartOptions: any = { ...this.lineChartOptions, ...this.title };
+
+  parseMonthly(monthly: MonthlyViewingTime[]) {
+    monthly.forEach((month) => {
+      this.monthLabels.push(month.date);
+      this.months[0].data.push(month.runtime / 60);
+    }
+    );
+  }
 
   // events
   chartClicked(e: any): void {
@@ -82,14 +84,12 @@ export class LinechartComponent implements OnInit {
 
   }
 
-  MonthChartOptions: any = { ...this.lineChartOptions, ...this.title };
-
   constructor(private gateway: GatewayService) {
     this.gateway.stats.subscribe((data: JSONstats) => {
       if (data) {
         this.parseMonthly(data.monthly);
       }
-    })
+    });
   }
 
   ngOnInit() {

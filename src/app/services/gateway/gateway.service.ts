@@ -8,7 +8,7 @@ import fakeStats from '../../../assets/fakeStats.json';
 import { FormatService } from '../format/format.service';
 import { EnvService } from '../../env.service';
 
-import { EMPTY } from 'rxjs'
+import { EMPTY } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

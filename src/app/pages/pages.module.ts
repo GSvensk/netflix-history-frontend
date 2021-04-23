@@ -24,8 +24,8 @@ import { MultiLinechartComponent } from './charts/multi-linechart/multi-linechar
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
-  //{ path: 'FAQ', component: HeroDetailComponent }
-]
+  // { path: 'FAQ', component: HeroDetailComponent }
+];
 
 
 @NgModule({
