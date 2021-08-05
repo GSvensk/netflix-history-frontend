@@ -6,7 +6,7 @@ import { JSONstats } from '../../models/JSONstats.model';
 
 import fakeStats from '../../../assets/fakeStats.json';
 import { FormatService } from '../format/format.service';
-import { EnvService } from '../../env.service';
+import { environment } from '../../../environments/environment';
 
 import { EMPTY } from 'rxjs';
 
@@ -23,7 +23,9 @@ export class GatewayService {
     })
   };
 
-  constructor(private http: HttpClient, private formatter: FormatService, private env: EnvService) {}
+  constructor(private http: HttpClient, private formatter: FormatService) {
+    console.log("Api url: " + environment.apiUrl)
+  }
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
@@ -31,7 +33,7 @@ export class GatewayService {
   }
 
   getResults(titles: Map<string, string>) {
-    return this.http.post(`${this.env.apiUrl}/statistics`, titles, this.httpOptions);
+    return this.http.post(`${environment.apiUrl}/statistics`, titles, this.httpOptions);
   }
 
   postStatistics(titles: Map<string, string>) {

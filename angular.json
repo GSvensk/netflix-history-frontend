@@ -21,7 +21,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets/pexels-photo-758976.jpeg",
-              "src/env.js"
             ],
             "styles": ["src/styles.css", "src/theme.scss"],
             "scripts": []

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { GatewayService } from './services/gateway/gateway.service';
 import { PagesModule } from './pages/pages.module';
-import { EnvServiceProvider } from './env.service.provider';
 
 
 
@@ -29,7 +28,7 @@ import { EnvServiceProvider } from './env.service.provider';
     MatToolbarModule,
     MatButtonModule
   ],
-  providers: [GatewayService, EnvServiceProvider],
+  providers: [GatewayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
