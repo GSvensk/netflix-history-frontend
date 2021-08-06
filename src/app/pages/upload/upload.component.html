@@ -1,11 +1,12 @@
-<div style="text-align:center">
-  <input hidden type="file" #uploader (change)="uploadFile($event)" />
-  <button
+<div class="container-upload">
+  <div
+    style="text-align: center"
+    (fileDropped)="onFileDropped($event)"
     *ngIf="!loading"
-    mat-raised-button
-    id="upload"
-    (click)="uploader.click()"
   >
-    Upload the file!
-  </button>
+    <input type="file" #upload id="upload" (change)="uploadFile($event)" />
+    <h3 class="instr">Drag and drop file here</h3>
+    <h3 class="instr"> or </h3>
+    <label for="upload" id="button">Browse for file</label>
+  </div>
 </div>
