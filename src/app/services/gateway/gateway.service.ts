@@ -33,7 +33,7 @@ export class GatewayService {
   }
 
   getResults(titles: Map<string, string>) {
-    return this.http.post(`${environment.apiUrl}/statistics`, titles, this.httpOptions);
+    return this.http.post(`${environment.apiUrl}/statistics/`, titles, this.httpOptions);
   }
 
   postStatistics(titles: Map<string, string>) {
