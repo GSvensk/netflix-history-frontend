@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://app:8080"
+  apiUrl: window["env"]["apiUrl"] || "http://app:8080",
 };
