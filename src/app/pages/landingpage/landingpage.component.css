@@ -21,7 +21,9 @@
 }
 
 #attribution {
+    position: absolute;
     bottom: 0;
-    margin: 0;
-    left: 0;
+    left: 4vh;
+    width: 60vh;
+    height: 15vh;
 }

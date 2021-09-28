@@ -2,9 +2,10 @@
   <div class="layer">
     <app-instructions *ngIf="!failed"></app-instructions>
     <app-error-page *ngIf="failed"></app-error-page>
-    <app-fake-stats-button *ngIf="!production"></app-fake-stats-button>
+    <app-attribution id=attribution></app-attribution>
   </div>
 </div>
+<app-fake-stats-button *ngIf="!production"></app-fake-stats-button>
 <div
   [ngClass]="loading || upload ? 'single-page-component' : 'hide'"
   id="spinner"
