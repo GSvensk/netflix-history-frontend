@@ -15,10 +15,13 @@ export class ParseService {
   constructor(private gatewayService: GatewayService, private papa: Papa, private formatter: FormatService, private state: StateService) { }
 
   parse($event) {
-    console.log(event);
     this.papa.parse(
       $event.target.files[0],
       {
+        error: function(err, file)
+	      {
+          this.state.fail();    
+	      },
         complete: result => {
           this.parseFile(result['data']);
         }
@@ -48,7 +51,6 @@ export class ParseService {
         this.state.stopLoad();
         this.state.removeUpload();
         this.state.fail();
-        console.error(error);
       }
     );
   }
