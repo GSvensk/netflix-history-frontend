@@ -23,9 +23,7 @@ export class GatewayService {
     })
   };
 
-  constructor(private http: HttpClient, private formatter: FormatService) {
-    console.log("Api url: " + environment.apiUrl)
-  }
+  constructor(private http: HttpClient, private formatter: FormatService) {}
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
