@@ -21,6 +21,7 @@ import { QuickstatsComponent } from './quickstats/quickstats.component';
 import { LinechartComponent } from './charts/linechart/linechart.component';
 import { BarchartComponent } from './charts/barchart/barchart.component';
 import { MultiLinechartComponent } from './charts/multi-linechart/multi-linechart.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -42,7 +43,8 @@ const routes: Routes = [
     QuickstatsComponent,
     LinechartComponent,
     BarchartComponent,
-    MultiLinechartComponent
+    MultiLinechartComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,
