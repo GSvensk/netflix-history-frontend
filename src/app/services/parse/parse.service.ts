@@ -47,6 +47,7 @@ export class ParseService {
       error => {
         this.state.stopLoad();
         this.state.removeUpload();
+        this.state.fail();
         console.error(error);
       }
     );

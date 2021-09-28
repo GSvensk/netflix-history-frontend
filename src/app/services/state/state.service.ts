@@ -8,6 +8,7 @@ export class StateService {
 
   hasUpload: BehaviorSubject<boolean> = new BehaviorSubject(false);
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  hasFailed: BehaviorSubject<boolean> = new BehaviorSubject(false);
   titles: Observable<number> = of(0);
 
   constructor() { }
@@ -26,6 +27,10 @@ export class StateService {
 
   stopLoad() {
     this.isLoading.next(false);
+  }
+
+  fail() {
+    this.hasFailed.next(true);
   }
 
   set numberOfTitles(titles: number) {

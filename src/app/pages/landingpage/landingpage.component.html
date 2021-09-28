@@ -1,5 +1,6 @@
 <div class="single-page-component">
-  <app-instructions></app-instructions>
+  <app-instructions *ngIf="!failed"></app-instructions>
+  <app-error-page *ngIf="failed"></app-error-page>
   <app-fake-stats-button *ngIf="!production" ></app-fake-stats-button>
 </div>
 <div
