@@ -21,6 +21,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets/pexels-photo-758976.jpeg",
+              "src/assets/tmdb-logo.png",
               "src/assets/env.js",
               "src/assets/env.template.js"
             ],
