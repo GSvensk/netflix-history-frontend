@@ -30,6 +30,11 @@ export class LinechartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: {
+      xAxes: [{
+        ticks: {
+          maxTicksLimit: 16
+        }
+      }],
       yAxes: [{
         stacked: true,
         gridLines: {
