@@ -26,3 +26,12 @@ body {
 .single-page-component {
   min-height: 100vh;
 }
+
+@media screen and (max-width: 60em) {
+  
+  :root {
+    --font-size-small: 3vw;
+    --font-size-medium: 6vw;
+    --font-size-large: 9vw;
+  }
+}
