@@ -41,3 +41,11 @@
 #app-upload {
     width: 70%;
 }
+
+@media screen and (max-width: 60em) {
+    .instructions {
+        padding-top: 10%;
+        font-weight: 400;
+        margin: 0% 10%;
+    }
+  }
