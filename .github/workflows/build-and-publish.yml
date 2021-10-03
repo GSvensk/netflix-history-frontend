@@ -1,9 +1,8 @@
 name: Build and publish image to ECR
 
 on:
-  push:
-    branches:
-    - master
+  release:
+    types: [released]
 
 jobs:
   build-and-publish:
@@ -23,7 +22,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: netflix-history-frontend
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ github.event.release.tag_name }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
