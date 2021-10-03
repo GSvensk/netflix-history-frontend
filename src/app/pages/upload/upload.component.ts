@@ -8,9 +8,6 @@ import { ScrollService } from 'src/app/shared/scroller/scroll.service';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  titlesConsumed: number;
-  loading = false;
-
   constructor(
     private parseService: ParseService,
     private scroller: ScrollService
@@ -20,6 +17,6 @@ export class UploadComponent implements OnInit {
 
   uploadFile($event) {
     this.scroller.triggerScrollTo();
-    this.parseService.parse($event);
+    this.parseService.parse($event.target.files[0]);
   }
 }

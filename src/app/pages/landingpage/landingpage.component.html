@@ -1,5 +1,5 @@
 <div class="single-page-component main-container">
-  <div class="layer">
+  <div class="layer" (appDropfile)="onDrop($event)">
     <app-instructions *ngIf="!failed"></app-instructions>
     <app-error-page *ngIf="failed"></app-error-page>
     <app-attribution id=attribution></app-attribution>

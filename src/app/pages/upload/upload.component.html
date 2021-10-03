@@ -1,7 +1,6 @@
 <div style="text-align:center">
   <input hidden type="file" #uploader (change)="uploadFile($event)" />
   <button
-    *ngIf="!loading"
     mat-raised-button
     id="upload"
     (click)="uploader.click()"

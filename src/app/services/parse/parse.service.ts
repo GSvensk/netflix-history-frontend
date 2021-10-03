@@ -14,14 +14,17 @@ export class ParseService {
 
   constructor(private gatewayService: GatewayService, private papa: Papa, private formatter: FormatService, private state: StateService) { }
 
-  parse($event) {
+  parse(file) {
+    if (file.type != "text/csv") {
+      this.state.fail()
+    }
+    
     this.papa.parse(
-      $event.target.files[0],
+      file,
       {
-        error: function(err, file)
-	      {
-          this.state.fail();    
-	      },
+        error: function (err, file) {
+          this.state.fail();
+        },
         complete: result => {
           this.parseFile(result['data']);
         }
