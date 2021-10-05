@@ -27,8 +27,8 @@ FROM nginx:latest
 #
 ## Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/netflix-activity /usr/share/nginx/html
-#
-## Expose port 80
-EXPOSE 80
+
+COPY nginx.conf /etc/nginx/
+EXPOSE 443
 
 CMD ["/bin/sh",  "-c",  "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
