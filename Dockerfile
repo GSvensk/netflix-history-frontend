@@ -26,6 +26,7 @@ RUN npm prune --production
 FROM nginx:latest
 #
 ## Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/netflix-activity /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/local/app/dist/netflix-activity /usr/share/www/html
 
-CMD ["/bin/sh",  "-c",  "sed -i 's/listen  .*/listen 443;/g' /etc/nginx/conf.d/default.conf && envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
+CMD ["/bin/sh",  "-c",   "envsubst < /usr/share/www/html/assets/env.template.js > /usr/share/www/html/assets/env.js && exec nginx -g 'daemon off;'"]
