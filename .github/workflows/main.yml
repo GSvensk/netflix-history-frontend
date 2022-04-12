@@ -38,9 +38,6 @@ jobs:
         SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
     - name: Deploy
       run: |
-        ls
-        ls dist/netflix-activity
-        ls dist/netflix-activity/netflix-activity
         ./linode-deployment/deploy.sh
       shell: bash
       env:
