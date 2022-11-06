@@ -27,3 +27,14 @@
     width: 26vh;
     height: 2vh;
 }
+
+@media screen and (max-width: 60em) {
+
+    #attribution {
+        position: absolute;
+        bottom: 1.5vh;
+        left: 10vh;
+        width: 26vh;
+        height: 2vh;
+    }
+}
