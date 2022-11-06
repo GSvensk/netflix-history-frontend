@@ -48,4 +48,9 @@
         font-weight: 400;
         margin: 0% 10%;
     }
+
+    .litem {
+        height: 124px !important;
+        margin-bottom: 2%;
+    }
   }
