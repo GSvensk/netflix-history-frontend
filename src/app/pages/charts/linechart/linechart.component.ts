@@ -29,6 +29,7 @@ export class LinechartComponent implements OnInit {
   lineChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [{
         ticks: {

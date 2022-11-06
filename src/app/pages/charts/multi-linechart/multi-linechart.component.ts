@@ -24,6 +24,7 @@ export class MultiLinechartComponent implements OnInit {
   lineChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         stacked: false,

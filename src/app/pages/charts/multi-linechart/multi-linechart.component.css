@@ -1,0 +1,14 @@
+.chart-container {
+    position: relative;
+    height: 84vh;
+    width: 84vw;
+}
+
+@media screen and (max-width: 60em) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 42vh;
+        width: 84vw;
+    }
+}

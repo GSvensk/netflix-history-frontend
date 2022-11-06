@@ -20,6 +20,7 @@ export class BarchartComponent implements OnInit {
   chartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         stacked: true,
