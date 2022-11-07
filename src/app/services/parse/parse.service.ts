@@ -37,10 +37,10 @@ export class ParseService {
     content.pop();
     this.state.numberOfTitles = content.length;
     this.state.load();
-    const json: Map<string, string> = new Map<string, string>();
+    const json: Array<Entry> = new Array();
 
     content.forEach(item => {
-      json[item[0]] = item[1];
+      json.push([item[0], item[1]]);
     });
 
     this.gatewayService.getResults(json).subscribe(

@@ -30,7 +30,7 @@ export class GatewayService {
     this.stats = of(formattedFakeStats);
   }
 
-  getResults(titles: Map<string, string>) {
+  getResults(titles: Array<Entry>) {
     return this.http.post(`${environment.apiUrl}/statistics`, titles, this.httpOptions);
   }
 
