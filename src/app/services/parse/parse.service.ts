@@ -5,6 +5,7 @@ import { Papa } from 'ngx-papaparse';
 import { JSONstats } from 'src/app/models/JSONstats.model';
 import { StateService } from '../state/state.service';
 import { of } from 'rxjs';
+import { Entry } from './entry';
 
 
 @Injectable({
@@ -40,7 +41,7 @@ export class ParseService {
     const json: Array<Entry> = new Array();
 
     content.forEach(item => {
-      json.push([item[0], item[1]]);
+      json.push({title: item[0], date: item[1]});
     });
 
     this.gatewayService.getResults(json).subscribe(

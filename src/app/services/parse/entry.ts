@@ -1,1 +1,4 @@
-type Entry = [string,string];
+export interface Entry {
+    title: string;
+    date: string;
+}
