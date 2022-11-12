@@ -5,7 +5,7 @@ import { Papa } from 'ngx-papaparse';
 import { JSONstats } from 'src/app/models/JSONstats.model';
 import { StateService } from '../state/state.service';
 import { of } from 'rxjs';
-import { Entry } from './entry';
+import { Entry } from './entry.model';
 
 
 @Injectable({

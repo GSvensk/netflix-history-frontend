@@ -9,7 +9,7 @@ import { FormatService } from '../format/format.service';
 import { environment } from '../../../environments/environment';
 
 import { EMPTY } from 'rxjs';
-import { Entry } from '../parse/entry';
+import { Entry } from '../parse/entry.model';
 
 @Injectable({
   providedIn: 'root'
