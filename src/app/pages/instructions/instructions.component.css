@@ -25,7 +25,8 @@
 }
 
 .litem {
-    margin-bottom: 2%;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 #app-upload {
@@ -36,11 +37,16 @@
     .instructions {
         padding-top: 10%;
         font-weight: 400;
-        margin: 0% 10%;
+        margin: 0% 2%;
     }
 
     .litem {
         height: 124px !important;
         margin-bottom: 2%;
+    }
+
+    #app-upload {
+        width: 70%;
+        margin: auto;
     }
   }
