@@ -8,7 +8,7 @@ export class StateService {
 
   hasUpload: BehaviorSubject<boolean> = new BehaviorSubject(false);
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  hasFailed: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  errorMessage: BehaviorSubject<string> = new BehaviorSubject("");
   titles: Observable<number> = of(0);
 
   constructor() { }
@@ -29,8 +29,12 @@ export class StateService {
     this.isLoading.next(false);
   }
 
-  fail() {
-    this.hasFailed.next(true);
+  fail(message?: string) {
+    let displayMessage = "Something went wrong."
+    if (message != null && message != "") {
+      displayMessage = message;
+    }
+    this.errorMessage.next(displayMessage);
   }
 
   set numberOfTitles(titles: number) {

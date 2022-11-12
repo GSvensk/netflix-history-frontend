@@ -1,7 +1,7 @@
 <div class="single-page-component main-container">
   <div class="layer" appDropfile>
-    <app-instructions *ngIf="!failed"></app-instructions>
-    <app-error-page *ngIf="failed"></app-error-page>
+    <app-instructions *ngIf="!errorMessage"></app-instructions>
+    <app-error-page *ngIf="errorMessage" [message]="errorMessage"></app-error-page>
     <app-attribution id=attribution></app-attribution>
   </div>
 </div>

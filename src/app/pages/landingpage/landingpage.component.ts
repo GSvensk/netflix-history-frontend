@@ -11,7 +11,7 @@ export class LandingpageComponent implements OnInit {
 
   upload = false;
   loading = false;
-  failed = false;
+  errorMessage = "";
   production: boolean = environment !== undefined ? environment.production : false;
 
   constructor(private state: StateService) { }
@@ -19,6 +19,6 @@ export class LandingpageComponent implements OnInit {
   ngOnInit() {
     this.state.hasUpload.subscribe(upload => this.upload = upload);
     this.state.isLoading.subscribe(loading => this.loading = loading);
-    this.state.hasFailed.subscribe(failed => this.failed = failed);
+    this.state.errorMessage.subscribe(errorMessage => this.errorMessage = errorMessage);
   }
 }

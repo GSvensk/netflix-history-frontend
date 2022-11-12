@@ -17,14 +17,15 @@ export class ParseService {
 
   parse(file) {
     if (file.type != "text/csv") {
-      this.state.fail()
+      this.state.fail("Your netflix history should be a .csv file")
+      return;
     }
     
     this.papa.parse(
       file,
       {
         error: function (err, file) {
-          this.state.fail();
+          this.state.fail("Unexpected format of file");
         },
         complete: result => {
           this.parseFile(result['data']);
@@ -54,7 +55,7 @@ export class ParseService {
       error => {
         this.state.stopLoad();
         this.state.removeUpload();
-        this.state.fail();
+        this.state.fail(error.error.message);
       }
     );
   }
