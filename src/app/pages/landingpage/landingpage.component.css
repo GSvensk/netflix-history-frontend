@@ -28,6 +28,13 @@
     height: 2vh;
 }
 
+#share {
+    width: 100%;
+    background-color: var(--detail-color);
+    font-size: var(--font-size-medium);
+    height: 6vh;
+}
+
 @media screen and (max-width: 60em) {
 
     #attribution {

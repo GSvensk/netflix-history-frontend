@@ -1,6 +1,7 @@
 import { MonthlyViewingTime } from './MonthlyViewingTime';
 
 export interface JSONstats {
+    id: string;
     titles: number;
     totalTime: number;
     notFound: number;
