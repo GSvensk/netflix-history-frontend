@@ -6,9 +6,11 @@ import { JSONstats } from '../../models/JSONstats.model';
 
 import fakeStats from '../../../assets/fakeStats.json';
 import { FormatService } from '../format/format.service';
+import { StateService } from '../state/state.service';
 import { environment } from '../../../environments/environment';
 
-import { EMPTY } from 'rxjs';
+import { ScrollService } from 'src/app/shared/scroller/scroll.service';
+
 import { Entry } from '../parse/entry.model';
 
 @Injectable({
@@ -24,18 +26,31 @@ export class GatewayService {
     })
   };
 
-  constructor(private http: HttpClient, private formatter: FormatService) {}
+  constructor(private http: HttpClient, private formatter: FormatService, private state: StateService, private scrollService: ScrollService) {}
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
     this.stats = of(formattedFakeStats);
   }
 
-  getResults(titles: Array<Entry>) {
+  post(titles: Array<Entry>) {
     return this.http.post(`${environment.apiUrl}/statistics`, titles, this.httpOptions);
   }
 
-  postStatistics(titles: Map<string, string>) {
-    return EMPTY;
+  get(id: string) {
+    return this.http.get(`${environment.apiUrl}/statistics/${id}`, this.httpOptions).subscribe(
+      (data: JSONstats) => {
+        data = this.formatter.format(data);
+        this.stats = of(data);
+        this.state.upload();
+        this.state.stopLoad();
+        this.scrollService.triggerScrollTo();
+      },
+      error => {
+        this.state.stopLoad();
+        this.state.removeUpload();
+        this.state.fail(error.error.message);
+      }
+    );
   }
 }

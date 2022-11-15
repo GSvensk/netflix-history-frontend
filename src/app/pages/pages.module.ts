@@ -26,6 +26,7 @@ import { DropfileDirective } from './dropfile.directive';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
+  { path: 'analysis', component: LandingpageComponent },
   // { path: 'FAQ', component: HeroDetailComponent }
 ];
 

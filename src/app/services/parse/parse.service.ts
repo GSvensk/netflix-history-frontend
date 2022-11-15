@@ -45,7 +45,7 @@ export class ParseService {
       json.push({title: item[0], date: item[1]});
     });
 
-    this.gatewayService.getResults(json).subscribe(
+    this.gatewayService.post(json).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
         this.gatewayService.stats = of(data);
