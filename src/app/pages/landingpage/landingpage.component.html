@@ -9,15 +9,17 @@
 <div [ngClass]="loading || upload ? 'single-page-component' : 'hide'" id="spinner">
   <app-spinner *ngIf="loading"></app-spinner>
   <app-chart *ngIf="upload && !loading"></app-chart>
-  <div *ngIf="upload && myUpload">
-    <button mat-raised-button id="share" value="click to copy link to clipboard" (click)="copyMessage()">
-      Share!
-    </button>
-  </div>
-  <div *ngIf="upload && !myUpload">
-    <button mat-raised-button id="share" value="click to copy" (click)="goToStart()">
-      Try yourself!
-    </button>
+  <div class="call-to-action">
+    <div *ngIf="upload && myUpload">
+      <button mat-raised-button id="share" value="click to copy link to clipboard" (click)="copyMessage()">
+        Share!
+      </button>
+    </div>
+    <div *ngIf="upload && !myUpload">
+      <button mat-raised-button id="share" value="try yourself" (click)="goToStart()">
+        Try yourself!
+      </button>
+    </div>
   </div>
 </div>
 <!--

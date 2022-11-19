@@ -29,10 +29,11 @@
 }
 
 #share {
-    width: 100%;
+    width: 40%;
     background-color: var(--detail-color);
     font-size: var(--font-size-medium);
-    height: 6vh;
+    height: 10vh;
+    margin: 5% 30%
 }
 
 @media screen and (max-width: 60em) {
@@ -43,5 +44,13 @@
         left: 10vh;
         width: 26vh;
         height: 2vh;
+    }
+
+    #share {
+        width: 40%;
+        background-color: var(--detail-color);
+        font-size: var(--font-size-medium);
+        height: 8vh;
+        margin: auto 30%
     }
 }
