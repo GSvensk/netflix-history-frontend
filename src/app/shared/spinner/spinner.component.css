@@ -1,3 +1,8 @@
 #loading {
-    margin: 4% 45%;
+    margin: 4% 20%;
+    text-align: center;
+}
+
+#spinner {
+    margin: auto;
 }

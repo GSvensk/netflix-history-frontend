@@ -1,11 +1,12 @@
 .message {
+  text-align: center;
   padding-top: 10%;
   font-weight: 400;
   margin: 0% 20%;
 }
 
 #retry {
-  width: 80vh;
+  width: 100%;
   background-color: var(--detail-color);
   font-size: var(--font-size-medium);
   height: 8vh;
