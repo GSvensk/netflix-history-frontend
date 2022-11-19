@@ -22,10 +22,17 @@
 
 #attribution {
     position: absolute;
-    bottom: 1.5vh;
+    bottom: 2vh;
     left: 1.5vh;
     width: 26vh;
     height: 2vh;
+}
+
+#disclaimer {
+    position: absolute;
+    bottom: 0vh;
+    right: 1.5vh;
+    font-size: var(--font-size-small);
 }
 
 #share {
@@ -40,7 +47,7 @@
 
     #attribution {
         position: absolute;
-        bottom: 1.5vh;
+        bottom: 6vh;
         left: 10vh;
         width: 26vh;
         height: 2vh;
@@ -53,4 +60,12 @@
         height: 8vh;
         margin: auto 30%
     }
+
+    #disclaimer {
+        position: absolute;
+        bottom: 2vh;
+        right: 1.5vh;
+        text-align: center;
+        font-size: var(--font-size-small);
+    }    
 }
