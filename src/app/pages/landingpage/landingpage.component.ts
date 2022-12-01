@@ -41,18 +41,15 @@ export class LandingpageComponent implements OnInit {
     const shareData = {
       title: 'mynetflixhistory.com',
       text: 'Check out your netflix history!',
-      url: environment.apiUrl + "/analysis?id=" + this.id
+      url: window.location.origin + "/analysis?id=" + this.id
     }
 
     let navigator: any;
 
     navigator = window.navigator;
-
     if (navigator && navigator.canShare && navigator.canShare(shareData)) {
-      console.log("canShare");
       await navigator.share(shareData);
     } else {
-      console.log("copied");
       this.copyLink();
     }
   }
@@ -63,7 +60,7 @@ export class LandingpageComponent implements OnInit {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = environment.apiUrl + "/analysis?id=" + this.id;
+    selBox.value = window.location.origin + "/analysis?id=" + this.id;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();

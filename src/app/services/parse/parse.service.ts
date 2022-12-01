@@ -48,7 +48,7 @@ export class ParseService {
     this.gatewayService.post(json).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
-        this.gatewayService.stats = of(data);
+        this.gatewayService.stats.next(data);
         this.state.stopLoad();
         this.state.upload();
       },

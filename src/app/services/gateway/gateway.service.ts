@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { JSONstats } from '../../models/JSONstats.model';
 
 import fakeStats from '../../../assets/fakeStats.json';
@@ -18,7 +18,7 @@ import { Entry } from '../parse/entry.model';
 })
 export class GatewayService {
 
-  stats: Observable<JSONstats> = of(null);
+  stats: Subject<JSONstats> = new ReplaySubject<JSONstats>(null);
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -30,7 +30,7 @@ export class GatewayService {
 
   readFakeResults() {
     const formattedFakeStats = this.formatter.format(fakeStats);
-    this.stats = of(formattedFakeStats);
+    this.stats.next(formattedFakeStats);
   }
 
   post(titles: Array<Entry>) {
@@ -41,7 +41,7 @@ export class GatewayService {
     return this.http.get(`${environment.apiUrl}/statistics/${id}`, this.httpOptions).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
-        this.stats = of(data);
+        this.stats.next(data);
         this.state.upload();
         this.state.stopLoad();
         this.scrollService.triggerScrollTo();
