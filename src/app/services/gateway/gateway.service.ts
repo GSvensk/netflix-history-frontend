@@ -49,7 +49,11 @@ export class GatewayService {
       error => {
         this.state.stopLoad();
         this.state.removeUpload();
-        this.state.fail(error.error.message);
+        if (error.status == 404) {
+          this.state.fail("Page not found");
+        } else {
+          this.state.fail(error.error.message);
+        }
       }
     );
   }
