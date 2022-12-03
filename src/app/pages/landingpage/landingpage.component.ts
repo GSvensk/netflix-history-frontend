@@ -15,6 +15,7 @@ export class LandingpageComponent implements OnInit {
   loading = false;
   myUpload = true;
   errorMessage = "";
+  shareText = "Share!";
   production: boolean = environment !== undefined ? environment.production : false;
   id: string;
 
@@ -34,13 +35,13 @@ export class LandingpageComponent implements OnInit {
   }
 
   goToStart(){
-    window.location.href='https://www.mynetflixhistory.com/';
+    window.location.href=window.location.origin;
   }
 
   async copyMessage(){
     const shareData = {
       title: 'mynetflixhistory.com',
-      text: 'Check out your netflix history!',
+      text: 'Check out my netflix history!',
       url: window.location.origin + "/analysis?id=" + this.id
     }
 
@@ -66,5 +67,6 @@ export class LandingpageComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    this.shareText = "Link copied to clipboard"
   }
 }

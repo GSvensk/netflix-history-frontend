@@ -13,7 +13,7 @@
   <div class="call-to-action">
     <div *ngIf="upload && myUpload">
       <button mat-raised-button id="share" value="click to copy link to clipboard" (click)="copyMessage()">
-        Share!
+        {{shareText}}
       </button>
     </div>
     <div *ngIf="upload && !myUpload">
