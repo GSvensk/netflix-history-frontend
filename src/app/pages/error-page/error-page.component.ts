@@ -15,6 +15,6 @@ export class ErrorPageComponent implements OnInit {
   }
 
   reload() {
-    window.location.href=window.location.href
+    window.location.href=window.location.origin
   }
 }
