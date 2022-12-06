@@ -33,7 +33,7 @@ export class GatewayService {
     this.stats.next(formattedFakeStats);
   }
 
-  post(titles: Array<Entry>) {
+  post(titles: string[][]) {
     return this.http.post(`${environment.apiUrl}/statistics`, titles, this.httpOptions);
   }
 

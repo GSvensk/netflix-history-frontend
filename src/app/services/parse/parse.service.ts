@@ -4,8 +4,6 @@ import { FormatService } from '../format/format.service';
 import { Papa } from 'ngx-papaparse';
 import { JSONstats } from 'src/app/models/JSONstats.model';
 import { StateService } from '../state/state.service';
-import { of } from 'rxjs';
-import { Entry } from './entry.model';
 
 
 @Injectable({
@@ -39,13 +37,8 @@ export class ParseService {
     content.pop();
     this.state.numberOfTitles = content.length;
     this.state.load();
-    const json: Array<Entry> = new Array();
 
-    content.forEach(item => {
-      json.push({title: item[0], date: item[1]});
-    });
-
-    this.gatewayService.post(json).subscribe(
+    this.gatewayService.post(content).subscribe(
       (data: JSONstats) => {
         data = this.formatter.format(data);
         this.gatewayService.stats.next(data);
