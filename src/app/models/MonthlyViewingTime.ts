@@ -1,4 +1,4 @@
 export interface MonthlyViewingTime {
-    runtime: number;
+    runtimeMinutes: number;
     date: string;
 }

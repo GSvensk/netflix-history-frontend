@@ -76,7 +76,7 @@ export class LinechartComponent implements OnInit {
   parseMonthly(monthly: MonthlyViewingTime[]) {
     monthly.forEach((month) => {
       this.monthLabels.push(month.date);
-      this.months[0].data.push(month.runtime / 60);
+      this.months[0].data.push(month.runtimeMinutes / 60);
     }
     );
   }

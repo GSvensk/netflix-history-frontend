@@ -89,9 +89,9 @@ export class MultiLinechartComponent implements OnInit {
         this.colors.push(this.redOffset(index));
       }
       if (isNaN(this.years[index].data[monIndex])) {
-        this.years[index].data[monIndex] = (month.runtime / 60);
+        this.years[index].data[monIndex] = (month.runtimeMinutes / 60);
       } else {
-        this.years[index].data[monIndex] += (month.runtime / 60);
+        this.years[index].data[monIndex] += (month.runtimeMinutes / 60);
       }
     }
     );
