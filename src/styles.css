@@ -8,9 +8,9 @@
   --background-color: #564d4d;
   --detail-color: #831010;
 
-  --font-size-small: 1vw;
-  --font-size-medium: 2vw;
-  --font-size-large: 3vw;
+  --font-size-small: max(1vw, 12px);
+  --font-size-medium: max(2vw, 16px);
+  --font-size-large: max(2vw, 20px);
 }
 
 html,
