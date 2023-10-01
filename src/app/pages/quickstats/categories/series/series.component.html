@@ -1,6 +1,6 @@
 <div>
   <app-stat name="Favorite series" number="{{stats.mostWatchedSeries}}"></app-stat>  
   <app-stat name="Episodes watched" number={{stats.mostWatchedSeriesEpisodes}}></app-stat>  
-  <app-stat *ngIf="(mostWatchedSeriesTotalTime!=0)" name="Total time" number={{(stats.mostWatchedSeriesTotalTime).toFixed(1)}} unit="h"></app-stat>  
+  <app-stat *ngIf="(mostWatchedSeriesTotalTime!=0.0)" name="Total time" number={{(stats.mostWatchedSeriesTotalTime).toFixed(1)}} unit="h"></app-stat>  
 </div>
 
